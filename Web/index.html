@@ -1,0 +1,4173 @@
+<html >
+<script data-require="angular.js@*" data-semver="1.6.0" src="http://code.angularjs.org/1.6.0/angular.js"></script>
+  <script data-require="angular-animate@*" data-semver="1.6.0" src="http://code.angularjs.org/1.6.0/angular-animate.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-svg-round-progressbar/0.4.8/roundProgress.min.js"></script> 
+<script  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.10/angular-material.min.css">
+   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.10/angular-material.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+   <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=no" />
+ <style>
+
+ .animate-show,
+.animate-hide {
+  -webkit-transition:all linear 0.5s;
+  -moz-transition:all linear 0.5s;
+  -ms-transition:all linear 0.5s;
+  -o-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+.animatex-show {
+  animation:you 1s;
+  -webkit-animation:you 1s;
+ 
+}
+.animatex-hide {
+  animation:my 1s;
+  -webkit-animation:my 1s;
+
+}
+@-webkit-keyframes my
+{
+from {-webkit-transform:scaleY(0)}
+to {}
+}
+@-webkit-keyframes you
+{
+from {}
+to {-webkit-transform:scaleY(0)}
+}
+.animatey-show {
+  animation:anim 1s;
+  -webkit-animation:anim 1s;
+
+}
+@-webkit-keyframes anim
+{
+from {}
+to {-webkit-transform:translateY(1000px)}
+}
+.animate-show.ng-hide-remove,
+.animate-hide.ng-hide-add.ng-hide-add-active {
+ opacity: 0;
+  display: block !important;
+  height:0px 
+  
+}
+
+.animate-hide.ng-hide-add,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+   opacity: 1;
+  display: block !important;
+   height:100px
+  
+}
+.progress-box{
+    -webkit-transform:rotate(-90deg);
+    transform:rotate(-90deg);
+}
+
+.animate1-show,.detail-show{
+  animation:myfirst 1s;
+  -webkit-animation:myfirst 1s;
+}
+
+@-webkit-keyframes myfirst
+{
+from {-webkit-transform:translateX(500px)}
+to {}
+}
+.animate2-show,.eventtitle-show,.threebutton-show,.fourbuttons-show,.sortcategory-show,.sortorder-show,.showmore-show{
+  animation:myfirst2 1s;
+  -webkit-animation:myfirst2 1s;
+}
+
+@-webkit-keyframes myfirst2
+{
+from {-webkit-transform:translateX(-500px)}
+to {-webkit-transform:translateX(0%)}
+}
+
+
+
+
+
+
+
+
+
+
+
+.sortorder-mobile{
+  animation:myfirst2 1s;
+  -webkit-animation:myfirst2 1s;
+}
+.sortcategory-mobile{
+  animation:myfirst2 1s;
+  -webkit-animation:myfirst2 1s;
+}
+@keyframes myfirst9
+{
+from {position:relative;top:0px;left:-30%}
+to {position:relative;top:0px;left:0%}
+}
+@-webkit-keyframes myfirst9
+{
+from {position:relative;top:0px;left:-30%}
+to {position:relative;top:0px;left:0%}
+}
+md-autocomplete-wrap{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;}
+ </style>
+
+<script>
+var mobile = false;
+window.onload = function()
+{
+
+//if (window.innerWidth<1000)
+if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) 
+  
+
+{
+	mobile = true;
+
+	document.getElementById("fourupcoming").innerHTML = "Upcoming";
+	document.getElementById("fourartist").innerHTML = "Artist";
+	//document.body.style.zoom= 1.5;
+	//document.getElementById("form").style.width = window.innerWidth
+	$("#fourleft").css('margin-left','17%');
+
+	$("#list").css('margin-left','');
+	$("#mobilestar").css('margin-right','');
+	$("#sortcategory").width(window.innerWidth-100);
+	$("#sortorder").width(window.innerWidth-100);
+	$("#mobilesort").css('margin-left','');
+	$("#mobiledetail").css('margin-right','');
+	$("#mobilegrey").width('90%');
+	$("#mobilegrey").height('750px');
+	$("#mobileform").css('margin-left','5%');
+	$("#keyword").width('90%');
+	
+	$("md-autocomplete-wrap").width($("#keyword").width()+10);
+	$("md-autocomplete-wrap").height('30px');
+	document.getElementById("mobilespace").innerHTML = "<br/>";
+	document.getElementById("mobilespace1").innerHTML = "";
+	document.getElementById("mobilespace2").innerHTML = "";
+	document.getElementById("mobilespace3").innerHTML = "";
+	document.getElementById("mobilehuanhang").innerHTML = "<br/>";
+	$("#wrongkeyword").width('90%');
+	$("#wrongkeyword").css('margin-left','0%');
+	//$("#mobilecategory").width('118%');
+	//$("#mobilecategory").width('150%');
+	$("#category").width($("#keyword").width()-20);
+	$("#mobilecategory").css('margin-left','-2%');
+	$("#autolist").css('left','7%');
+	$("#autolist").width('85%');
+	//$("#distance").width('87%');
+	$("#distance").width($("#keyword").width());
+	$("#miles").width($("#keyword").width()-20);
+	$("#2").width($("#keyword").width());
+	document.getElementById("mobilehuanhang2").innerHTML = "<br/>";
+	document.getElementById("mobilehuanhang3").innerHTML = "<br/>";
+	//$("#mobilemiles").width('92%');
+	//$("#mobilemiles").width('75%');
+	$("#mobilemiles").css('margin-left','-2%');
+	//$("#2").width('75%')
+	
+	$("*").css('font-size','25')
+}
+else
+{
+	//position:absolute;top:25px;left:627px
+	
+	$("#keyword").css('position','relative');
+
+	$("#keyword").css('top','-20px');
+	$("#keyword").css('left','93px');
+}
+	if (mobile)
+	{
+		document.getElementById("tableX").innerHTML = "<div style='background-color:Bisque;width:95%'>No records</div>";
+	}
+	else
+	{
+		document.getElementById("tableX").innerHTML = "<div style='background-color:Bisque;width:950px'>No records</div>";
+	}
+	$("#tableX").css('display','none');
+}
+var app = angular.module('StarterApp', ['ngMaterial'])
+ app.controller('AppCtrl', ['$scope', function($scope){
+
+$scope.hh = function(query)
+{
+
+	$scope.text = query;
+	keyword = query;
+	if (isNull(query)==false)
+			{
+		
+			$.get("/autocomplete",{"keyword":query},function(data){
+	
+		autocomplete(data);
+		
+	
+	}
+	)
+	}
+	else
+	{auto = new Array();input()}
+		if (auto!=null && auto.length!=0)
+		{
+			$scope.res=auto;
+			}
+	
+}
+$scope.fill=function(x)
+{
+	$scope.text = x;
+	keyword = x;
+}
+
+}]);
+
+ var app = angular.module('myApp', ['ngAnimate']);
+
+app.controller('MainController', ['$scope',
+  function MainController($scope) {
+	
+    //	$scope.animate = false;
+	 $scope.$on('changeModel',function(ev,v){
+           $scope.animate = v;
+		
+    })
+    $scope.play = function() {
+	
+	if ($("#showmore").val() == "Show More")
+	{
+
+		$scope.animate = true;
+		$scope.down = true;
+		
+	}
+	else
+	{
+		$scope.animate = false;
+		$scope.down = false;
+	}
+
+      $scope.animate = !$scope.animate;
+	 // alert($scope.animate )
+	
+    }
+
+	 $scope.right = true;
+	 $scope.$on('detailvisible',function(ev,v){
+           $scope.right = v;
+		   $scope.down = 'no';
+
+    })
+    	//
+ $scope.$on('righting',function(ev,v){
+           $scope.right = v;
+		//   $.down = !v;
+
+    })
+
+  }
+]);
+
+ 
+
+var app5=angular.module("list",[]);
+app5.controller("clicklist", ['$scope','$rootScope',function($scope, $rootScope){
+  // $scope.name = "test1";
+      $scope.change = function() {
+	
+	
+    $rootScope.$broadcast('tablevisible',true);
+	showNow = "list";
+	}
+	 $scope.right = true;
+	 $scope.$on('detailvisible',function(ev,v){
+           $scope.right = v;
+	
+    })
+    	//
+ $scope.$on('righting',function(ev,v){
+           $scope.right = v;
+	
+    })
+}]);
+
+var app5=angular.module("search",[]);
+app5.controller("clicksearch", ['$scope','$rootScope',function($scope, $rootScope){
+  // $scope.name = "test1";
+      $scope.change = function() {
+	
+	if (showNow == "details")
+	{
+		$rootScope.$broadcast('clisearch',true);
+	}
+	else
+	{
+		$rootScope.$broadcast('clisearch',false);
+	}
+	if (showNow == "details")
+	{
+		$rootScope.$broadcast('searchleft','left');
+	}
+	else
+	{
+		$rootScope.$broadcast('searchleft',false);
+	}
+
+	showNow = "details";
+    }
+}]);
+var app5=angular.module("resorfav",[]);
+app5.controller("resfav", ['$scope','$rootScope',function($scope, $rootScope){
+  // $scope.name = "test1";
+      $scope.res = function() {
+
+	if (showNow == "details")
+	{
+		$rootScope.$broadcast('cliresults',true);
+	}
+	else
+	{
+		$rootScope.$broadcast('cliresults',false);
+	}
+	
+
+	showNow = "list";
+    }
+	$scope.fav = function() {
+
+	if (showNow == "details")
+	{
+		$rootScope.$broadcast('clifavorites',true);
+	}
+	else
+	{
+		$rootScope.$broadcast('clifavorites',false);
+	}
+	
+
+	showNow = "list";
+    }
+}]);
+var app4 = angular.module('left', ['ngAnimate']);
+
+app4.controller('moveLeft', ['$scope',
+
+  function moveLeft($scope) {
+  $scope.left = true;
+	 $scope.$on('tablevisible',function(ev,v){
+	// $("#tableX").css('display','block');
+           $scope.left = v;
+
+    })
+	 $scope.$on('clisearch',function(ev,v){
+           $scope.left = v;
+
+    }
+	
+	
+	)
+	 $scope.$on('choodetail',function(ev,v){
+
+           $scope.left = v;
+
+    })
+    	//
+	$scope.$on('cliresults',function(ev,v){
+
+           $scope.left = v;
+		
+    })
+     $scope.$on('clifavorites',function(ev,v){
+
+           $scope.left = v;
+
+    })
+
+  }
+  
+]);
+var app5 = angular.module('progress-bar', ['ngAnimate']);
+
+app5.controller('chooseProgressbar', ['$scope',
+
+  function moveRight($scope) {
+  $scope.right = false;
+	 $scope.$on('detailvisible',function(ev,v){
+           $scope.right = 'right';
+	
+    })
+    	//
+ $scope.$on('righting',function(ev,v){
+           $scope.right = false;
+	
+    })
+ $scope.$on('searchleft',function(ev,v){
+           $scope.right = v;
+	
+    })
+  }
+]);
+ var app5 = angular.module('right', ['ngAnimate']);
+
+app5.controller('moveRight', ['$scope',
+
+  function moveRight($scope) {
+  $scope.right = true;
+	 $scope.$on('detailvisible',function(ev,v){
+           $scope.right = v;
+	
+    })
+    	//
+ $scope.$on('righting',function(ev,v){
+           $scope.right = v;
+	
+    })
+
+  }
+]);
+ var app5 = angular.module('twobuttons', ['ngAnimate']);
+
+app5.controller('chooseTwobuttons', ['$scope',
+
+  function chooseTwobuttons($scope) {
+  $scope.right = true;
+	 $scope.$on('detailvisible',function(ev,v){
+	 if (mobile)
+	 {
+		$scope.right = "x";
+	 }
+	 else
+	 {
+           $scope.right = v;
+		}
+	
+    })
+    	//
+ $scope.$on('righting',function(ev,v){
+           $scope.right = v;
+	
+    })
+
+  }
+]);
+ var app5 = angular.module('eventtitle', ['ngAnimate']);
+
+app5.controller('moveEventtitle', ['$scope',
+
+  function moveEventtitle($scope) {
+  $scope.right = true;
+	 $scope.$on('detailvisible',function(ev,v){
+           $scope.right = v;
+	
+    })
+    	//
+ $scope.$on('righting',function(ev,v){
+           $scope.right = v;
+	
+    })
+
+  }
+]);
+var app6=angular.module("details",[]);
+app6.controller("clickdetails", ['$scope','$rootScope',function($scope, $rootScope){
+  // $scope.name = "test1";
+      $scope.change = function() {
+
+	//$rootScope.$broadcast('choodetail',false);
+    $rootScope.$broadcast('detailvisible',true);
+
+	showNow = "details";
+	}
+	$scope.$on('tablevisible',function(ev,v){
+	// $("#tableX").css('display','block');
+           $scope.left = v;
+
+    })
+	 $scope.$on('clisearch',function(ev,v){
+           $scope.left = v;
+
+    }
+	
+	
+	)
+	
+    	//
+	$scope.$on('cliresults',function(ev,v){
+
+           $scope.left = v;
+		
+    })
+     $scope.$on('clifavorites',function(ev,v){
+
+           $scope.left = v;
+
+    })
+}]);
+
+
+
+
+var app3=angular.module("myApp3",[]);
+app3.controller("Test1Ctrl", ['$scope','$rootScope',function($scope, $rootScope){
+  // $scope.name = "test1";
+      $scope.change = function() {
+  var x;
+  if ($("#showmore").val() == "Show More")
+	{
+
+		x = false;
+	}
+	else
+	{
+		x = true;
+	}
+	
+    $rootScope.$broadcast('changeModel',x);}
+	 $scope.choose = function() {
+ 
+	
+    $rootScope.$broadcast('righting',false);}
+	 $scope.right = true;
+	 $scope.$on('detailvisible',function(ev,v){
+           $scope.right = v;
+	
+    })
+    	//
+ $scope.$on('righting',function(ev,v){
+           $scope.right = v;
+	
+    })
+}]);
+
+
+	angular.module('myApp2', ['angular-svg-round-progressbar']);
+	angular.module('findTickets', [	'myApp','myApp2','myApp3','left','right','details','list','search','resorfav','eventtitle','twobuttons','progress-bar','StarterApp']);
+
+</script>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<script  src="http://momentjs.com/downloads/moment.min.js"></script>	  
+	 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+
+
+
+
+
+<style>
+.grey:hover{background-color:Gainsboro}
+</style>
+<script 
+	
+	async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCk6r6eLf8FHBwjdwPKO0FyukeJhrIqYWA&callback=openmap&language=en-US">
+</script>
+<script>
+$(document).ready(function(){
+	
+});
+
+function isNull(str)
+{
+
+if ( str == "" ) return true;
+var regu = "^[ ]+$";
+var re = new RegExp(regu);
+return re.test(str);
+
+}
+var auto = new Array();
+function autocomplete(jsonObj)
+{
+	auto = new Array();
+	jsonObj = JSON.parse(jsonObj);
+	if (jsonObj==null || jsonObj._embedded==null || jsonObj._embedded.attractions==null)
+	{
+	}
+	else
+	{
+		var attractions = jsonObj._embedded.attractions;
+		auto = new Array();
+		for (i=0;i<attractions.length;i++)
+		{
+			if (attractions[i]==null || attractions[i].name==null)
+			{
+			}
+			else
+			{
+				auto.push(attractions[i].name);
+			}
+		}
+		
+	}
+}
+var keyword = "";
+function input()
+{
+//if (document.getElementById("keyword").value!="")
+
+
+
+
+ if (isNull(keyword)==false)
+{
+//alert(document.getElementById("keyword").value);
+//document.getElementById("wrongkeyword").innerHTML="";
+//document.getElementById("keyword").removeAttribute("class","is-invalid");
+ //$("keyword").removeClass("is-invalid");
+ /*
+ $.get("/autocomplete",{"keyword":$("#keyword").val()},function(data){
+	
+		autocomplete(data);
+		
+	
+	}
+	)
+ 
+ */
+ $("#keyword").removeClass("is-invalid");
+ $("md-autocomplete-wrap").css('border-color','#80bdff')
+ $("#wrongkeyword").css('display','none')
+ var selectedlocation = $("input[name='chooselocation']:checked").val();
+
+ if (selectedlocation == "Here")
+ {
+ $("#submit").removeAttr("disabled");
+ }
+ else{
+ //if ($("#2").val()!="")
+  if (isNull($("#2").val())==false)
+ { $("#submit").removeAttr("disabled");}
+ 
+ }
+}
+else
+{
+//document.getElementById("wrongkeyword").innerHTML = "&nbsp  &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp  &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp  &nbsp         Please enter a keyword.";
+
+ $("#keyword").addClass("is-invalid");
+ $("md-autocomplete-wrap").css('border-color','#dc3545')
+	 $("#wrongkeyword").css('display','block')
+  $("#submit").attr("disabled","true");
+}
+	
+}
+function chooseHere()
+{
+ $("#2").removeClass("is-invalid");
+ $("#2").attr("disabled","true");
+ //if ($("#keyword").val()!="")
+ if (isNull(keyword)==false)
+ {
+  $("#submit").removeAttr("disabled");
+ }
+ else
+ {
+   $("#submit").attr("disabled","true");
+ }
+}
+function chooseElse()
+{
+$("#2").removeAttr("disabled");
+//if ($("#keyword").val()!="")
+if (isNull(keyword)==false)
+{
+//if ($("#2").val()=="")
+ if (isNull($("#2").val()))
+{ $("#2").addClass("is-invalid");$("#submit").attr("disabled","true");}
+else
+{ $("#2").removeClass("is-invalid");$("#submit").removeAttr("disabled");}
+
+}
+else
+{
+//if ($("#2").val()=="")
+ if (isNull($("#2").val()))
+ {$("#2").addClass("is-invalid");}
+else {$("#2").removeClass("is-invalid");}
+}
+
+}
+function inputlocation()
+{
+//if ($("#keyword").val()!="")
+if (isNull(keyword)==false)
+{
+//if ($("#2").val()=="")
+if (isNull($("#2").val()))
+{ $("#2").addClass("is-invalid");$("#submit").attr("disabled","true");}
+else
+{ $("#2").removeClass("is-invalid");$("#submit").removeAttr("disabled");}
+
+}
+else
+{
+//if ($("#2").val()=="")
+if (isNull($("#2").val()))
+ {$("#2").addClass("is-invalid");}
+else {$("#2").removeClass("is-invalid");}
+}
+}
+var chuanshui = "";
+function cc()
+{
+	
+	$("#fourbuttons").css('display','none');
+	$("#eventtitle").css('display','none');
+	
+	$("#sortcategory").css('display','none');
+	$("#sortorder").css('display','none');
+	
+	$("#map").css('display','none');
+	$("#showmore").css('display','none');
+	$("#threebutton").css('display','none');
+	document.getElementById("showmore").value = "Show More";
+	
+	
+
+	
+	$("#detail").css('display','none');
+	$("#sortcategory").val("Default");
+	$("#sortorder").val("Ascending");
+	$("#sortorder").attr("disabled","true");
+	$("#detail").attr("disabled","true");
+	
+	 $('[data-toggle="tooltip"]').tooltip(); 
+$("#results").addClass("btn-primary");
+	$("#results").removeClass("btn-outline-primary");
+	$("#favorites").removeClass("btn-primary");
+	$("#favorites").addClass("btn-outline-primary");
+	
+$("#progressbar").css('display','block');
+	$("#tableX").css('display','none');
+	$("#tableY").css('display','none');
+	$("#tableZ").css('display','none');
+	$("#tablePlus").css('display','none');
+lat = 0;
+lon = 0;
+//if ($("#keyword").val()!="")
+if (isNull(keyword)==false)
+{
+if ($("input[name='chooselocation']:checked").val()=="Here")
+{
+
+/*
+$.getJSON(url, function(json){
+	alert(json.lat);
+//
+});*/
+
+		
+$.get("http://ip-api.com/json",{},function(data){
+//alert(data);
+		
+ lat = data.lat;
+		lon = data.lon;
+		var distance = 0;
+if ($("#distance").val()=="")
+{
+distance = 10;
+}
+else
+{
+distance = $("#distance").val();
+}
+var miles = "";
+if ($("#miles").val()=="Miles")
+{
+miles = "miles";
+}
+else
+{
+miles = "km";
+}
+var category = "";
+	
+	if ($("#category").val() == "All")
+		category = "";
+	if ($("#category").val() == "Music")
+		category ="KZFzniwnSyZfZ7v7nJ";
+	if ($("#category").val() == "Sports")
+		category="KZFzniwnSyZfZ7v7nE";
+	if ($("#category").val() == "Arts & Theatre")
+		category="KZFzniwnSyZfZ7v7na";
+	if ($("#category").val() == "Film")
+		category="KZFzniwnSyZfZ7v7nn";
+	if ($("#category").val() == "Miscellaneous")
+		category="KZFzniwnSyZfZ7v7n1";
+/*
+	$.get({
+  type:"GET",
+  url:"/here",
+
+  data: {
+ keyword:$("#keyword").val(),category:category,distance:distance,miles:miles,lat:lat,lon:lon
+  }	
+  
+},function(da){alert(da);});
+*/
+
+$.get("/here",{"keyword":keyword,"category":category,"distance":distance,"miles":miles,"lat":lat,"lon":lon},function(data){
+//alert(data);
+			//loadTable(data);
+			chuanshui = data;
+		
+			 setTimeout("loadTable()",1000);
+ 
+		}).fail(function()
+		{
+		$("#progressbar").css('display','none')
+		if (mobile)
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:95%'>Failed to get events search results.</div>";
+		}
+		else
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:950px'>Failed to get events search results.</div>";
+		}
+	
+
+		$("#tableX").css('display','block')
+		});
+
+		}).fail(function()
+		{
+		$("#progressbar").css('display','none')
+		if (mobile)
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:95%'>Failed to get events search results.</div>";
+		}
+		else
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:950px'>Failed to get events search results.</div>";
+		}
+	
+
+		$("#tableX").css('display','block')
+		});
+
+
+
+}
+else
+{
+	var distance = 0;
+if ($("#distance").val()=="")
+{
+distance = 10;
+}
+else
+{
+distance = $("#distance").val();
+}
+var miles = "";
+if ($("#miles").val()=="Miles")
+{
+miles = "miles";
+}
+else
+{
+miles = "km";
+}
+var category = "";
+	
+	if ($("#category").val() == "All")
+		category = "";
+	if ($("#category").val() == "Music")
+		category ="KZFzniwnSyZfZ7v7nJ";
+	if ($("#category").val() == "Sports")
+		category="KZFzniwnSyZfZ7v7nE";
+	if ($("#category").val() == "Arts & Theatre")
+		category="KZFzniwnSyZfZ7v7na";
+	if ($("#category").val() == "Film")
+		category="KZFzniwnSyZfZ7v7nn";
+	if ($("#category").val() == "Miscellaneous")
+		category="KZFzniwnSyZfZ7v7n1";
+
+	
+
+$.get("/else",{"keyword":keyword,"category":category,"distance":distance,"miles":miles,"where":$("#2").val()},function(data){
+//alert(data);
+			//loadTable(data);
+			chuanshui = data;
+	//alert(chuanshui)
+setTimeout("loadTable()",1000);
+		}).fail(function()
+		{
+		$("#progressbar").css('display','none')
+		if (mobile)
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:95%'>Failed to get events search results.</div>";
+		}
+		else
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:950px'>Failed to get events search results.</div>";
+		}
+	
+
+		$("#tableX").css('display','block')
+		});
+
+//setTimeout("xx();",3000);
+
+}
+} 
+//document.getElementById("table2").innerHTML = "";
+//document.getElementById("table").innerHTML = "";
+
+}
+
+var resid = new Array();
+
+
+var textResults = "";
+var textFavorites = "";
+var textEvent = "";
+var textArtist = "";
+var textPhoto = "";
+var textVenue = "";
+var textUpcoming1 = "";
+var textUpcoming2 = "";
+var showNow = "";
+function loadTable()
+{
+	$("#progressbar").css('display','none');
+	
+
+
+	
+	showNow = "list";
+	
+	
+	$("#tableX").css('display','block');
+
+	$("#detail").css('display','block');
+	var jsonObj = chuanshui;
+	
+	
+	
+	resid = new Array();
+	
+	var text = "";
+	var biaotou = ["#","Date","Event","Category","Venue Info","Favorite"];
+	
+	
+	if (mobile)
+	{
+		text = "<table width='1500px' border-top='1' border-bottom='1' ><tbody><tr>";
+		//text = "<table width='950px' border-top='1' border-bottom='1' ><tbody><tr>";
+	}
+	else
+	{
+		text = "<table width='950px' border-top='1' border-bottom='1' ><tbody><tr>";
+	}
+		
+
+	var curtext = "";
+	var fan = "";
+	for (i=0;i<6;i++)
+		text += "<th>"+biaotou[i]+"</th>";
+	text += "</tr>";
+	var fid = JSON.parse(localStorage.getItem('favid'));
+	if (jsonObj == "")
+	{
+		if (mobile)
+		{
+			text = "<div style='background-color:Bisque;width:95%'>No records</div>";
+		}
+		else
+		{
+			text = "<div style='background-color:Bisque;width:950px'>No records</div>";
+		}
+		document.getElementById("tableX").innerHTML = text;
+	textResults = text;
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+	$('[data-toggle="tooltip"]').tooltip();  
+		return;
+	}
+	jsonObj = JSON.parse(jsonObj);
+	if (jsonObj == null || jsonObj._embedded==null || jsonObj._embedded.events == null)
+	{
+		
+		if (mobile)
+		{
+			text = "<div style='background-color:Bisque;width:95%'>No records</div>";
+		}
+		else
+		{
+			text = "<div style='background-color:Bisque;width:950px'>No records</div>";
+		}
+	}
+	else
+	{
+		event = jsonObj._embedded.events;
+		
+		for (i=0;i<event.length;i++)
+		{
+			curtext = "";
+			resid.push(event[i].id);
+			text += "<tr id='hang"+i+"' class='grey'><td width='50px'>";
+			text += i+1 + "</td>";
+			text += "<td width='150px'>"
+			
+			curtext += "<td width='150px'>"
+	
+			if (event[i]==null || event[i].dates==null || event[i].dates.start==null || event[i].dates.start.localDate == null)
+			{
+			}
+			else
+		
+			{
+				text += event[i].dates.start.localDate;
+				curtext += event[i].dates.start.localDate;
+			}
+			text += "</td>";
+			curtext += "</td>";
+			text += "<td width='35%'>"
+			curtext += "<td width='35%'>"
+			if (event[i]==null || event[i].name==null)
+			{
+			
+			}
+			else
+			{
+				if (event[i].name.length <= 35)
+				{
+					//text += "<font color=blue><a  style='cursor:pointer' onclick=detail('"+event[i].id+"')>"+ event[i].name+"</font></a>";
+				//	text += "<a  href='javascript:void(0)' onclick=detail('"+event[i].id+"')>"+ event[i].name+"</a>";
+					//text += "<a href='javascript:void(0)' onclick=\"detail('"+event[i].id+"','"+event[i]._embedded.venues[0].name+"');changeyellow('hang"+i+"','"+event.length+"')\">" + event[i].name+"</a>";
+					text += "<a href='javascript:void(0)' onclick=\"detail('"+event[i].id+"','"+escape(event[i]._embedded.venues[0].name)+"','"+event[i].classifications[0].segment.name+"');changeyellow('hang"+i+"','"+event.length+"')\">" + event[i].name+"</a>";
+					curtext += "<a href='javascript:void(0)' onclick=\"detail('"+event[i].id+"','"+escape(event[i]._embedded.venues[0].name)+"','"+event[i].classifications[0].segment.name+"');changeyellow2('row"+event[i].id+"','"+event.length+"')\">" + event[i].name+"</a>";
+				
+				}
+				else
+				{
+					jiequ = 35;
+					while (event[i].name[jiequ] != " ")
+						jiequ -= 1;
+					
+				
+					//text += '<a  onmouseover="fullname(\''+event[i].name+'\')">'+event[i].name.substring(0,jiequ)+'</a>';
+					//text += "<font color=blue><a style='cursor:pointer' onclick=detail('"+event[i].id+"') data-toggle='tooltip' data-placement='bottom' title='"+event[i].name+"'>" + event[i].name.substring(0,jiequ)+"...</font></a>";
+					//text += "<a href='javascript:void(0)' onclick=detail('"+event[i].id+"') data-toggle='tooltip' data-placement='bottom' title='"+event[i].name+"'>" + event[i].name.substring(0,jiequ)+"...</a>";
+				
+					//text += "<a href='javascript:void(0)' onclick=\"detail('"+event[i].id+"','"+event[i]._embedded.venues[0].name+"');changeyellow('hang"+i+"','"+event.length+"')\" data-toggle='tooltip' data-placement='bottom' title='"+event[i].name+"'>" + event[i].name.substring(0,jiequ)+"...</a>";
+			
+					var tihuan = event[i].name.replace(/'/g,'&apos;')
+					
+					tihuan = tihuan.replace(/"/g,'&quot;')
+				
+					text += "<a  href='javascript:void(0)'  onclick=\"detail('"+event[i].id+"','"+escape(event[i]._embedded.venues[0].name)+"','"+event[i].classifications[0].segment.name+"');changeyellow('hang"+i+"','"+event.length+"')\" data-toggle='tooltip' data-placement='bottom' title='"+tihuan+"'>" + event[i].name.substring(0,jiequ)+"...</a>";
+					curtext += "<a href='javascript:void(0)' onclick=\"detail('"+event[i].id+"','"+escape(event[i]._embedded.venues[0].name)+"','"+event[i].classifications[0].segment.name+"');changeyellow2('row"+event[i].id+"','"+event.length+"')\" data-toggle='tooltip' data-placement='bottom' title='"+tihuan+"'>" + event[i].name.substring(0,jiequ)+"...</a>";
+					
+				}
+				
+			}
+			text += "</td>";
+			curtext += "</td>";
+			text += "<td width='300px'>"
+			curtext += "<td width='300px'>"
+			if (event[i]==null || event[i].classifications==null || event[i].classifications[0]==null || event[i].classifications[0].genre==null || event[i].classifications[0].genre.name == null)
+			{
+			}
+			else
+			{
+				text += event[i].classifications[0].genre.name+'-';
+				curtext += event[i].classifications[0].genre.name+'-';
+			}
+			if (event[i]==null || event[i].classifications==null || event[i].classifications[0]==null || event[i].classifications[0].segment==null || event[i].classifications[0].segment.name == null)
+			{
+			}
+			else
+			{
+				
+				text += event[i].classifications[0].segment.name;
+				curtext += event[i].classifications[0].segment.name;
+			}
+			
+			text += "</td>";
+			text += "<td width='25%'>"
+			curtext += "</td>";
+			curtext += "<td width='25%'>"
+			if (event[i]==null || event[i]._embedded==null || event[i]._embedded.venues==null || event[i]._embedded.venues[0]==null || event[i]._embedded.venues[0].name==null)
+			{
+			}
+			else
+			{
+				text += event[i]._embedded.venues[0].name;
+				curtext += event[i]._embedded.venues[0].name;
+			}
+			text += "</td>";
+			curtext += "</td>";
+			//alert(curtext);
+			//text += "<td><input class='material-icons' style='background:white' onclick='favoritemany(this)' type=button value='star_border'></td>"
+			curtext += "<td><button type='button' id='trash' class='btn btn-light material-icons' onclick=\"remove('"+event[i].id+"')\"     style='background : white;'>delete</button></td>";
+			
+			if (fid == null)
+			{
+				
+				curtext += "<td><button type='button' id='dark"+event[i].id+"' class='btn btn-light material-icons' onclick=\"favoritemany(this"+",'"+event[i].id+"'"+",'"+escape(curtext)+"')\"    style='background:white;display:none;'>star_border</button></td>";
+			}
+			else
+			{
+				if (fid.indexOf(event[i].id)!=-1)
+				{
+					
+					curtext += "<td><button type='button' id='dark"+event[i].id+"' class='btn btn-light material-icons' onclick=\"favoritemany(this"+",'"+event[i].id+"'"+",'"+escape(curtext)+"')\"    style='background:white;color:Gold;display:none;'>star</button></td>";
+				}
+				else
+				{
+					
+					curtext += "<td><button type='button' id='dark"+event[i].id+"' class='btn btn-light material-icons' onclick=\"favoritemany(this"+",'"+event[i].id+"'"+",'"+escape(curtext)+"')\"    style='background:white;display:none;'>star_border</button></td>";
+				}
+			}
+			
+			
+			
+			
+			if (fid == null)
+			{
+				text += "<td><button type='button' id='star"+event[i].id+"' class='btn btn-light material-icons' onclick=\"favoritemany(this"+",'"+event[i].id+"'"+",'"+escape(curtext)+"')\"    style='background:white;'>star_border</button></td>";
+			
+			}
+			else
+			{
+				if (fid.indexOf(event[i].id)!=-1)
+				{
+					text += "<td><button type='button' id='star"+event[i].id+"' class='btn btn-light material-icons' onclick=\"favoritemany(this"+",'"+event[i].id+"'"+",'"+escape(curtext)+"')\"    style='background:white;color:Gold'>star</button></td>";
+				
+				}
+				else
+				{
+					text += "<td><button type='button' id='star"+event[i].id+"' class='btn btn-light material-icons' onclick=\"favoritemany(this"+",'"+event[i].id+"'"+",'"+escape(curtext)+"')\"    style='background:white;'>star_border</button></td>";
+					
+				}
+			}
+			//text += "<td><button type='button' id='star' class='btn btn-light material-icons' onclick=\"favoritemany(this"+",'"+event[i].id+"')\"    style='background:white;'>star_border</button></td>";
+			//class="btn btn-primary material-icons"  TYPE=button id="submit" disabled name="submit" value="search" onclick="cc()">
+			text += "</tr>";
+			
+		}
+		text += "</tbody></table>"
+	
+		
+	}
+	// document.getElementById("table").innerHTML = text;
+	
+	document.getElementById("tableX").innerHTML = text;
+	textResults = text;
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+	$('[data-toggle="tooltip"]').tooltip();  
+	//alert(jsonRes._embedded.events[0].dates.start.localDate);
+}
+var eventname = "";
+var venuename = "";
+var eventurl = "";
+var xxx = 0;
+
+function favoriteone()
+{
+	//"<td><button type='button' id='star"+event[i].id+"' class='btn btn-light material-icons' onclick=\"favoritemany(this"+",'"+event[i].id+"'"+",'"+escape(curtext)+"')\"    style='background:white;'>star_border</button></td>";
+	var star = "star"+eventID;
+	if ("Favorites" != $(".btn-outline-primary").html())
+	{
+		//alert(event);
+		star = "dark"+eventID;
+		document.getElementById("star").style.background = 'white';
+		document.getElementById("star").style.color = 'Gold';
+		document.getElementById("star").innerHTML = "star";
+		if (document.getElementById(star)!=null)
+		{
+			document.getElementById("star").onclick = document.getElementById(star).onclick;
+	
+		}
+	}
+	else
+	{
+		//alert("star");
+		document.getElementById("star").style.background = document.getElementById(star).style.background;
+		document.getElementById("star").style.color = document.getElementById(star).style.color;
+		document.getElementById("star").innerHTML = document.getElementById(star).innerHTML;
+		document.getElementById("star").onclick = document.getElementById(star).onclick;
+	}
+	
+	
+
+	
+}
+function favoritemany(x,y,z)
+{
+	//x.value = "star";
+
+	z = unescape(z);
+
+	if (x.innerHTML == "star_border")
+	{
+		x.innerHTML = "star";
+		x.style = "background:white;color:Gold";
+		
+	
+	
+		z = z.replace('background:white;display:none;','background:white;color:Gold;display:none;');
+		z = z.replace('star_border','star');
+		
+		var fid = JSON.parse(localStorage.getItem('favid'));
+		var flist;
+		if (fid==null)
+		{
+			fid = [y];
+			z = "<tr id='row"+y+"'>" + "<td id='index"+y+"' width='50px'>1</td>"+z;
+			
+		
+			z+= "</tr>";
+		
+			flist = [z];
+		}
+		else
+		{
+			fid = JSON.parse(localStorage.getItem('favid'));
+			flist = JSON.parse(localStorage.getItem('favlist'));
+			fid.push(y);
+			z = "<tr id='row"+y+"'>" + "<td id='index"+y+"' width='50px'>" + (flist.length+1).toString()+"</td>"+z;
+			
+			
+			z+= "</tr>";
+			flist.push(z);
+		}
+
+	
+	
+		localStorage.setItem('favid',JSON.stringify(fid));
+		localStorage.setItem('favlist',JSON.stringify(flist));
+		//alert(weekArray==null);
+	}
+	else
+	{
+		x.innerHTML = "star_border";
+		x.style = "background:white";
+		//document.getElementById("dark"+y).innerHTML = "star_border";
+		//document.getElementById("dark"+y).style = "background:white";
+		remove(y);
+		$("#tableY").css('display','none');
+	}
+}
+function remove(x)
+{
+	
+	fid = JSON.parse(localStorage.getItem('favid'));
+	flist = JSON.parse(localStorage.getItem('favlist'));
+	var text = "";
+	if (fid!=null)
+	{
+	for (i=0;i<fid.length;i++)
+	{
+		if (fid[i]==x)
+		{
+			
+			break;
+		}
+	}
+	if (i > -1)
+	{
+		fid.splice(i,1);
+		flist.splice(i,1);
+	}
+	if (fid.indexOf(eventID) == -1 && "Favorites" != $(".btn-outline-primary").html())
+	{
+		$("#detail").attr('disabled','true');
+	}
+	localStorage.setItem('favid',JSON.stringify(fid));
+	localStorage.setItem('favlist',JSON.stringify(flist));
+	
+	if (mobile)
+	{
+		text += "<table width=1500px><tbody>";
+	}
+	else
+	{
+		text += "<table width=950px><tbody>";
+	}
+	
+	var biaotou = ["#","Date","Event","Category","Venue Info","Favorite"];
+	for (i=0;i<6;i++)
+		text += "<th>"+biaotou[i]+"</th>";
+	for (i=0;i<flist.length;i++)
+	{
+	
+		text += flist[i];
+	}
+	text += "</tbody></table>";
+	//alert(text);
+	/*
+	$("#table").css('display','none');
+	$("#table2").css('display','none');
+	$("#table3").css('display','none');
+	$("#table4").css('display','none');
+	$("#table5").css('display','none');
+	$("#table6").css('display','none');
+	
+	$("#fourbuttons").css('display','none');
+		$("#eventtitle").css('display','none');
+		
+		$("#sortcategory").css('display','none');
+		$("#sortorder").css('display','none');
+		$("#table6").css('display','none');
+		$("#map").css('display','none');
+		$("#showmore").css('display','none');
+		$("#seatpic").css('display','none');
+		$("#detail").css('display','block');
+		$("#threebutton").css('display','none');
+*/
+	
+	
+	//$(fav2yellow).css('display','block');
+	//document.getElementById("table7").innerHTML = text;
+	document.getElementById("tableY").innerHTML = text;
+	
+	textFavorites = text;
+	for (i=0;i<fid.length;i++)
+	{
+	
+		document.getElementById("index"+fid[i]).innerHTML = i+1;
+	}
+	
+	if (fid.length==0)
+	{
+		if (mobile)
+		{
+			document.getElementById("tableY").innerHTML = "<div style='background-color:Bisque;width:95%'>No records</div>";
+		}
+		else
+		{
+			document.getElementById("tableY").innerHTML = "<div style='background-color:Bisque;width:950px'>No records</div>";
+		}
+		
+	}
+  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+	
+	$(toyellow).css('background-color','Bisque');
+	
+	$("#tableY").css('display','block');
+	//alert(text);
+	$('[data-toggle="tooltip"]').tooltip();  
+	}
+}
+var searchnum = 0;
+function changeyellow(x,y)
+{
+	var which;
+	searchnum = y;
+	for (var i=0;i<parseInt(y);i++)
+	{
+		
+		
+		
+		$("#hang"+i).css('background-color','');
+	}
+	which = "#"+x;
+	//alert(document.getElementById("hang0"));
+	$(which).css('background-color','Bisque');
+	//document.getElementById("hang0").bgcolor = "red";
+}
+var toyellow = "";
+function changeyellow2(x,y)
+{
+	//alert(x);
+	
+	
+	
+	$("#"+x).css('background-color','Bisque');
+	toyellow = "#"+x;
+	fid = JSON.parse(localStorage.getItem('favid'));
+	for (i=0;i<fid.length;i++)
+	{
+		if ("#row"+fid[i] != toyellow)
+		{
+			$("#row"+fid[i]).css('background-color','');
+		}
+	}
+	$("#tableY").css('display','none');
+	//alert(fav2yellow);
+}
+var eventID;
+var f1 = false;
+var f2 = 0;
+var f3 = 0;
+var f4 = false;
+var f5 = false;
+var catez = "";
+function detail(x,y,z)
+
+{
+	textUpcoming1 = "";
+	textUpcoming2 = "";	
+	textResults = "";
+	textEvent = "";
+	textPhoto = "";
+	textVenue = "";
+	
+hasUpcoming = true;
+hasVenue = true;
+	var appElement = document.querySelector('[ng-controller=chooseProgressbar]');
+	var $scope = angular.element(appElement).scope(); 
+	$scope.right = 'right';
+	$scope.$apply();
+$("#progressbar").css('display','block');
+document.getElementById("showmore").value = "Show More";
+	$("#sortcategory").val("Default");
+	$("#sortorder").val("Ascending");
+	$("#sortorder").attr("disabled","true");
+	$("#tableX").css('display','none');
+	$("#detail").css('display','none');
+//setTimeout("dd('"+x+"','"+y+"','"+z+"')",1000);
+xxx = 0;
+eventID = x;
+artisttext = "";
+artistphoto = "";
+/*
+var fid;
+	
+	fid = JSON.parse(localStorage.getItem('favid'));
+	if (fid != null)
+	{
+		
+			if (fid.indexOf(x) == -1)
+			{
+				document.getElementById("star").innerHTML = "star_border";
+				$("#star").css('color','');
+			}
+			else
+			{
+				document.getElementById("star").innerHTML = "star";
+				$("#star").css('color','Gold');
+			}
+		
+	}*/
+
+favoriteone();
+f1 = false;
+f2 = 0;
+f3 = 0;
+f4 = false;
+f5 = false;
+catez = z;
+//alert("1")
+$.get("/detail",{"id":x},function(data){
+	
+		loadDetail(data);
+		//alert("2")
+		
+		setTimeout("ticketmaster2('"+y+"','"+z+"');",1000);
+		//alert(xxx);
+		if (artist==null || artist.length==0)
+		{
+		//	document.getElementById("table3").innerHTML = ""
+			textArtist = "";
+		//	document.getElementById("table4").innerHTML = "<div style='background-color:Bisque;width:950px'>No records</div>";
+			if (mobile)
+			{
+				textPhoto = "<div style='background-color:Bisque;width:95%'>No records</div>";
+			}
+			else
+			{
+				textPhoto = "<div style='background-color:Bisque;width:950px'>No records</div>";
+			}
+		}
+		if (z=="Music")
+		{
+		
+			for (i=0;i<artist.length;i++)
+			{
+				$.get("/artist",{"artistming":artist[i]},function(data){
+
+				
+
+				loadArtist(data);
+				//alert(f1+","+f2+","+f3+","+f4+","+f5)
+			
+	
+				})	.fail(function()
+		{
+		$("#progressbar").css('display','none')
+		if (mobile)
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:95%'>Failed to get details search results.</div>";
+		}
+		else
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:950px'>Failed to get details search results.</div>";
+		}
+	
+
+		$("#tableX").css('display','block')
+		});
+
+			}
+		}
+		else
+		{
+		//	document.getElementById("table3").innerHTML = "";
+			textArtist = "";
+		}
+		 
+		for (i=0;i<artist.length;i++)
+		{
+		$.get("/photo",{"id":artist[i]},function(data){
+	
+		
+		loadPhoto(data);
+		//alert(f1+","+f2+","+f3+","+f4+","+f5)
+	
+		}).fail(function()
+		{
+		$("#progressbar").css('display','none')
+		if (mobile)
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:95%'>Failed to get details search results.</div>";
+		}
+		else
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:950px'>Failed to get details search results.</div>";
+		}
+	
+
+		$("#tableX").css('display','block')
+		});
+
+
+	
+	
+		}
+		
+		
+		}
+	
+	
+	
+		).fail(function()
+		{
+		$("#progressbar").css('display','none')
+		if (mobile)
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:95%'>Failed to get details search results.</div>";
+		}
+		else
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:950px'>Failed to get details search results.</div>";
+		}
+	
+
+		$("#tableX").css('display','block')
+		});
+
+		
+	
+		
+		$.get("/upcoming",{"venue":y},function(data){
+		//alert("4")
+	
+		loadUpcoming(data);
+		
+		}
+		).fail(function()
+		{
+		$("#progressbar").css('display','none')
+		if (mobile)
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:95%'>Failed to get details search results.</div>";
+		}
+		else
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:950px'>Failed to get details search results.</div>";
+		}
+	
+
+		$("#tableX").css('display','block')
+		});
+
+	
+		
+			
+		
+}
+function dd(x,y,z)		
+{
+
+
+
+		
+		//alert(artist.length);
+		//alert(xxx);
+}
+var artist = new Array();
+function ticketmaster2(y,z)
+{
+	
+	$.get("/venue",{"venue":y},function(data){
+		//alert("3")
+		loadVenue(data);
+		
+		}
+		).fail(function()
+		{
+		$("#progressbar").css('display','none')
+		if (mobile)
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:95%'>Failed to get details search results.</div>";
+		}
+		else
+		{
+			document.getElementById("tableX").innerHTML = "<div style='background-color:LightPink;width:950px'>Failed to get details search results.</div>";
+		}
+	
+
+		$("#tableX").css('display','block')
+		});
+
+}
+function loadDetail(jsonObj)
+{
+		var appElement = document.querySelector('[ng-controller=moveRight]');
+	var $scope = angular.element(appElement).scope(); 
+	$scope.right = true;
+	$scope.$apply();
+		var appElement = document.querySelector('[ng-controller=MainController]');
+	var $scope = angular.element(appElement).scope(); 
+	$scope.right = true;
+	$scope.$apply();
+	var appElement = document.querySelector('[ng-controller=clicklist]');
+	var $scope = angular.element(appElement).scope(); 
+	$scope.right = true;
+	$scope.$apply();
+	var appElement = document.querySelector('[ng-controller=chooseTwobuttons]');
+	var $scope = angular.element(appElement).scope(); 
+	$scope.right = true;
+	$scope.$apply();
+	var appElement = document.querySelector('[ng-controller=moveEventtitle]');
+	var $scope = angular.element(appElement).scope(); 
+	$scope.right = true;
+	$scope.$apply();
+
+	var appElement = document.querySelector('[ng-controller=Test1Ctrl]');
+	var $scope = angular.element(appElement).scope(); 
+	$scope.right = true;
+	$scope.$apply();
+
+	$("[data-toggle='tooltip']").tooltip('hide');
+	//alert("1"+jsonObj)
+	//document.getElementById("table").innerHTML = "";
+	$("#tableX").css('display','none');
+	$("#detail").css('display','none');
+	var hang = 0;
+	jsonObj = JSON.parse(jsonObj);
+	
+	var text = "";
+	var text2 = "";
+	var event;
+	artist = new Array();
+	var artistnum = 0;
+	if (jsonObj == null || jsonObj._embedded==null || jsonObj._embedded.events == null)
+	{
+		
+		if (mobile)
+			{
+				text = "<div style='background-color:Bisque;width:95%'>No records</div>";
+			}
+			else
+			{
+				text = "<div style='background-color:Bisque;width:950px'>No records</div>";
+			}
+		document.getElementById("eventtitle").innerHTML = "";
+		
+	}
+	else
+	{
+		//$("#table2").css('display','inline');
+		//$("#eventtitle").css('display','inline');
+				//$("#fourbuttons").css('display','block');
+		event = jsonObj._embedded.events[0];
+		text2 += "<div ><font size=4><b>"+event.name+"</b></font></div>";
+		eventname = event.name;
+	/*	text2 += "<font color=blue>"
+		text2 += "&nbsp &nbsp &nbsp &nbsp &nbsp "
+		text2 += "&nbsp &nbsp &nbsp &nbsp &nbsp <a onclick='showdetail()' style='cursor:pointer'>Event</a>";
+		text2 += "&nbsp &nbsp &nbsp &nbsp &nbsp "
+		text2 += "<a style='cursor:pointer' onclick='showartist()'>Artist/Teams</a>";
+		text2 += "&nbsp &nbsp &nbsp &nbsp &nbsp "
+		text2 += "<a style='cursor:pointer'>Venue</a>";
+		text2 += "&nbsp &nbsp &nbsp &nbsp &nbsp "
+		text2 += "<a style='cursor:pointer'>Upcoming Events</a>";
+		text2 += "</font>";*/
+		document.getElementById("eventtitle").innerHTML = text2;
+		if (mobile)
+			{
+				text += "<table width='95%' border-top='1' border-bottom='1' ><tbody>";
+			}
+			else
+			{
+				text += "<table width='950px' border-top='1' border-bottom='1' ><tbody>";
+			}
+		
+		  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+	
+		if (event == null || event._embedded == null || event._embedded.attractions == null)
+		{
+			
+		}
+		else
+		{
+			hang++;
+			var att = jsonObj._embedded.events[0]._embedded.attractions;
+			if (hang % 2==1)
+			{
+				text += "<tr bgcolor='Gainsboro'><td width='200px'><b>Artist/Team(s)</b></td>";
+			}
+			else
+			{
+				text += "<tr><td width='200px'><b>Artist/Team(s)</b></td>";
+			}
+			text += "<td>";
+			
+			for (i=0;i<att.length;i++)
+			{
+				if (att[i].name != null)
+				{
+					text += att[i].name+"|";
+					artist[artistnum] = att[i].name;
+					
+					artistnum ++;
+				}
+			}
+			if (text[text.length-1] == '|')
+			{
+				text = text.substring(0,text.length-1);
+			}
+			text += "</td></tr>";
+		}
+	
+		if (event == null || event._embedded == null || event._embedded.venues == null || event._embedded.venues[0]==null || event._embedded.venues[0].name == null)
+		{
+			
+		}
+		else
+		{
+			hang += 1;
+			if (hang % 2==1)
+			{
+				text += "<tr bgcolor='Gainsboro'><td><b>Venue</b></td>"
+			}
+			else
+			{
+				text += "<tr><td><b>Venue</b></td>";
+			}
+			venuename = event._embedded.venues[0].name;
+			text += "<td>";
+			text += event._embedded.venues[0].name;
+			text += "</td></tr>";
+		}
+		
+		if (event.dates == null || event.dates.start == null || (event.dates.start.localDate == null && event.dates.start.localTime == null))
+		{
+			
+		}
+		else
+		{
+			
+			hang ++;
+			if (hang % 2==1)
+			{
+				text += "<tr bgcolor='Gainsboro'><td><b>Time</b></td>";
+			}
+			else
+			{
+				text += "<tr><td><b>Time</b></td>";
+			}
+			
+			text += "<td>";
+			if (event.dates.start.localDate != null)
+			{
+				text += moment(event.dates.start.localDate).format("MMM DD, YYYY")+" ";
+			}
+			if (event.dates.start.localTime != null)
+			{
+				text += event.dates.start.localTime+" ";
+			}
+			text += "</td></tr>";
+		}
+	
+		if (event.classifications == null || event.classifications[0]==null || (event.classifications[0].segment==null && event.classifications[0].genre==null))
+		{
+			
+		}
+		else
+		{
+			hang ++;
+			if (hang % 2==1)
+			{
+				text += "<tr bgcolor='Gainsboro'><td><b>Category</b></td>";
+			}
+			else
+			{
+				text += "<tr><td><b>Category</b></td>";
+			}
+	
+			text += "<td>";
+			if (event.classifications[0].segment.name != null)
+			{
+				text += event.classifications[0].segment.name;
+			}
+			
+			if (event.classifications[0].genre.name != null && event.classifications[0].segment.name != null)
+			{
+				text += "|";
+			}
+			if (event.classifications[0].genre.name != null)
+			{
+				text += event.classifications[0].genre.name;
+			}
+			text += "</td></tr>";
+		}
+	
+		if (event.priceRanges ==null || event.priceRanges[0]==null)
+		{
+		}
+		else
+		{
+			hang ++;
+			if (hang % 2==1)
+			{
+				text += "<tr bgcolor='Gainsboro'><td><b>Price Range</b></td>";
+			}
+			else
+			{
+				text += "<tr><td><b>Price Range</b></td>";
+			}
+	
+			
+			text += "<td>";
+			if (event.priceRanges[0].min != null)
+			{
+				text += "$"+event.priceRanges[0].min.toFixed(2);
+				if (event.priceRanges[0].max != null)
+				{
+					text += "~";
+				}
+			}
+			if (event.priceRanges[0].max != null)
+			{	
+				text += "$"+event.priceRanges[0].max.toFixed(2);
+			}
+			text += "</td></tr>";
+		}
+
+		if (event.dates==null || event.dates.status==null || event.dates.status.code==null)
+		{
+		}
+		else
+		{
+			hang ++;
+			if (hang % 2==1)
+			{
+				text += "<tr bgcolor='Gainsboro'><td><b>Ticket Status</b></td>";
+			}
+			else
+			{
+				text += "<tr><td><b>Ticket Status</b></td>";
+			}
+			
+			text += "<td>";
+			text += event.dates.status.code;
+			text += "</td></tr>";
+		}
+		if (event.url != null)
+		{
+			eventurl = event.url;
+			hang ++;
+			if (hang % 2==1)
+			{
+				text += "<tr bgcolor='Gainsboro'><td><b>Buy Ticket At</b></td>";
+			}
+			else
+			{
+				text += "<tr><td><b>Buy Ticket At</b></td>";
+			}
+			
+			text += "<td>";
+			text += "<a href="+event.url+" target='_blank'>Ticketmaster</a>";
+			text += "</td></tr>";
+		}
+	
+		if (event.seatmap==null || event.seatmap.staticUrl==null)
+		{
+		}
+		else
+		{
+			hang ++;
+			if (hang % 2==1)
+			{
+				text += "<tr bgcolor='Gainsboro'><td><b>Seat Map</b></td>";
+			}
+			else
+			{
+				text += "<tr><td><b>Seat Map</b></td>";
+			}
+			
+			text += "<td>";
+			//text += "<a href="+event.seatmap.staticUrl+" target='_blank'>View Seat Map Here</a>";
+			
+			document.getElementById("modalbody").innerHTML = "<a href='"+event.seatmap.staticUrl+"' target='_blank'><img src="+event.seatmap.staticUrl+" style='width:300px;height:200px'></a></br>";
+			  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+			text += "<a href='	javascript:void(0)' style='cursor:pointer' data-toggle='modal' data-target='#myModal' >"+"View Seat Map Here"+"</a>";
+			text += "</td></tr>";
+			
+		}
+		text += "</tbody></table>"
+	}
+
+//	document.getElementById("table2").innerHTML = text;
+	document.getElementById("tableZ").innerHTML = text;
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+
+	textEvent = text;
+	
+	f1 = true;
+	if (f1 && (f2==artist.length || catez!="Music")&& f3==artist.length && f4 && f5)
+				{
+					showdetail();
+				}
+	//alert("di1")
+	//showdetail();
+}
+/*
+function state_Change()
+{
+if (xmlhttp.readyState==4)
+  {// 4 = "loaded"
+  if (xmlhttp.status==200)
+    {// 200 = OK
+    // ...our code here...
+	tt = xmlhttp.responseText;
+		jsonObj = JSON.parse(xmlhttp.responseText);
+		lat = jsonObj.lat;
+		lon = jsonObj.lon;
+		alert(lat+" "+lon);
+    }
+  else
+    {
+    alert("Problem retrieving XML data");
+    }
+  }
+}*/
+
+function hideseatpic()
+{
+	$("#seatpic").css('display','none');
+	//document.getElementById("seatpic").style.display = "None";
+}
+function black()
+{
+	$("#closepic").removeClass('btn-light');
+	$("#closepic").addClass('btn-dark');
+}
+function light()
+{
+	$("#closepic").removeClass('btn-dark');
+	$("#closepic").addClass('btn-light');
+}
+function showdetail()
+{
+
+	showNow = "details";
+
+	
+	
+	$("#progressbar").css('display','none');
+	
+	$("#tableZ").css('display','block');
+	$("#tableX").css('display','none');
+	$("#tableY").css('display','none');
+	$("#tablePlus").css('display','none');
+	$("#map").css('display','none');
+	$("#sortcategory").css('display','none');
+	$("#sortorder").css('display','none');
+	
+	$("#eventtitle").css('display','block');
+	$("#fourbuttons").css('display','block');
+	$("#showmore").css('display','none');
+	
+	//$("#list").css('display','block');
+	//$("#twitter").css('display','block');
+	//$("#star").css('display','block');
+	$("#threebutton").css('display','block');
+	$("#detail").removeAttr('disabled');
+	
+	artisttext = "";
+	artistphoto = "";
+	detailwhat = "Event";
+	$("#fourevent").addClass("active");
+	$("#fourartist").removeClass("active");
+	$("#fourvenue").removeClass("active");
+	$("#fourupcoming").removeClass("active");
+
+	document.getElementById("tableZ").innerHTML = textEvent;
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+	//document.getElementById("table3").innerHTML = artisttext;
+}
+var artisttext = "";
+var artistphoto = "";
+function showartist()
+{
+	
+
+	showNow = "details";
+	
+	
+	document.getElementById("tableZ").innerHTML = textArtist + textPhoto;
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+	$("#sortcategory").css('display','none');
+	$("#sortorder").css('display','none');
+	
+	$("#map").css('display','none');
+	$("#showmore").css('display','none');
+	$("#tablePlus").css('display','none');
+	//alert(document.getElementById("table4").innerHTML);
+	artisttext = "";
+	artistphoto = "";
+	detailwhat = "Artist/Teams";
+	
+}
+var artistbottom = 0;
+function loadArtist(jsonObj)
+{
+
+	//alert("2.1	"+jsonObj);
+
+	if (jsonObj == null || jsonObj.artists == null || jsonObj.artists.items == null)
+	{
+			f2++;
+			if (f1 && (f2==artist.length || catez!="Music")&& f3==artist.length && f4 && f5)
+				{
+					showdetail();
+				}
+				  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+		return
+	}
+	var item = jsonObj.artists.items;
+	//alert("art    "+artistname);
+	//alert(" ff "+artist);
+	//alert(artist);
+	for (i=0;i<item.length;i++)
+	{
+		if ($.inArray(item[i].name,artist)>=0)
+		{
+			//alert(i+","+item[i].name);
+			var hang = 0;
+			artisttext += "<div align='center'><b>"+item[i].name+"</b></div>";
+			if (mobile)
+			{
+				artisttext += "<table align='center' width='95%' border-top='1' border-bottom='1'><tbody>";
+			}
+			else
+			{
+				artisttext += "<table align='center' width='950px' border-top='1' border-bottom='1'><tbody>";
+			}
+			
+			//artisttext += "<tr align='center'><td ><b>"+item[i].name+"</b></td></tr>";
+			hang ++;
+			if (hang %2 == 1)
+			{
+				artisttext += "<tr  bgcolor='Gainsboro'><td><b>Name</b></td>";
+				artisttext += "<td width='50%'>"+item[i].name+"</td></tr>";
+			}
+			else
+			{
+				artisttext += "<tr><td ><b>Name</b></td>";
+				artisttext += "<td width='50%'>"+item[i].name+"</td></tr>";
+			}
+			if (item[i].followers == null || item[i].followers.total == null)
+			{
+			}
+			else
+			{
+				hang ++;
+				
+				if (hang %2 == 1)
+			{
+				artisttext += "<tr bgcolor='Gainsboro'><td><b>Followers</b></td>";
+				//artisttext += "<td>"+item[i].followers.total+"</td></tr>";
+				artisttext += "<td>"+parseFloat(item[i].followers.total).toLocaleString()+"</td></tr>";
+			}
+			else
+			{
+				artisttext += "<tr><td><b>Followers</b></td>";
+				//artisttext += "<td>"+item[i].followers.total+"</td></tr>";
+				artisttext += "<td>"+parseFloat(item[i].followers.total).toLocaleString()+"</td></tr>";
+			}
+			}
+			if (item[i].popularity==null)
+			{
+			}
+			else
+			{
+				hang ++;
+			
+				if (hang %2 == 1)
+			{
+			
+				artisttext += "<tr bgcolor='Gainsboro'><td><b>Popularity</b></td>";
+				//artisttext += "<td>"+item[i].popularity+"</td></tr>";
+				var per = item[i].popularity/100*125;
+				artisttext += "<td>";
+				artisttext += ' <svg class="progress-box" width="120" height="120" xmlns="http://www.w3.org/2000/svg"><circle id="progress-trace" r="20" cy="65" cx="65" stroke-width="5" stroke="green" fill="none"/>  <circle id="progress-runner" r="20" cy="65" cx="65" stroke-width="5" stroke="#ddd" stroke-dasharray="125" stroke-dashoffset='+per+' fill="none"/></svg>';
+				artisttext += '<span style="position:relative;left:-65px;top:-60px;z-index:1">'+item[i].popularity+'</span>';
+				artisttext += "</td></tr>";
+ 
+   
+	
+ 
+
+				
+				
+			}
+			else
+			{
+				artisttext += "<tr ><td><b>Popularity</b></td>";
+				//artisttext += "<td>"+item[i].popularity+"</td></tr>";
+				var per = item[i].popularity/100*125;
+				artisttext += "<td>";
+				artisttext += ' <svg class="progress-box" width="120" height="120" xmlns="http://www.w3.org/2000/svg"><circle id="progress-trace" r="20" cy="65" cx="65" stroke-width="5" stroke="green" fill="none"/>  <circle id="progress-runner" r="20" cy="65" cx="65" stroke-width="5" stroke="#ddd" stroke-dasharray="125" stroke-dashoffset='+per+' fill="none"/></svg>';
+				artisttext += '<span style="position:relative;left:-65px;top:-60px;z-index:1">'+item[i].popularity+'</span>';
+				artisttext += "</td></tr>";
+ 
+			}
+			}
+			if (item[i].external_urls == null || item[i].external_urls.spotify == null)
+			{
+			}
+			else
+			{
+				hang ++;
+				if (hang %2 == 1)
+			{
+				artisttext += "<tr bgcolor='Gainsboro'><td><b>Check At</b></td>";
+				artisttext += "<td><a href='"+item[i].external_urls.spotify+"' target='_blank'>"+"Spotify"+"</td></tr>";
+			}
+			else
+			{
+				artisttext += "<tr><td><b>Check At</b></td>";
+				artisttext += "<td><a href='"+item[i].external_urls.spotify+"' target='_blank'>"+"Spotify"+"</td></tr>";
+			}
+			}
+			//artisttext += "<tr name='hh'><td></tr></td>";
+			artisttext += "</tbody></table>";
+			break;
+		}
+			//alert(artistname+",   "+item[i].name);
+	}
+	//document.getElementById("table3").innerHTML = artisttext;
+
+	textArtist = artisttext;
+	f2++;
+	if (f1 && (f2==artist.length || catez!="Music")&& f3==artist.length && f4 && f5)
+	{
+		showdetail();
+	}
+	//alert("di2.1")
+	//angular.module('findTickets', [	'myApp','myApp1','myApp2']);
+	//var y = document.getElementById("hh").offsetTop;
+	//alert(y);
+	//artistbottom = Math.max(artistbottom,document.getElementById("hh").offsetTop);
+	//artisttext = artisttext.substring(0,artisttext.length-26);
+	//alert(artistbottom);
+	//document.getElementById("table3").innerHTML = artisttext;
+}
+function loadPhoto(jsonObj)
+{
+	//alert("2.2"+jsonObj);
+	
+	jsonObj = JSON.parse(jsonObj);
+	
+	//alert(jsonObj.items[0].title);
+	if (jsonObj==null || jsonObj.items==null)
+	{
+		if (mobile)
+		{
+			artistphoto = "<div style='background-color:Bisque;width:95%'>No records</div>";
+		}
+		else
+		{
+			artistphoto = "<div style='background-color:Bisque;width:950px'>No records</div>";
+		}
+		
+	}
+	else
+	{
+		var item = jsonObj.items;
+		
+		artistphoto += "<div align='center'><b>"+jsonObj.queries.request[0].searchTerms+"</b></div>"
+	
+
+		if (mobile)
+		{
+			for (i=0;i<Math.min(8,item.length);i++)
+			{
+				artistphoto += "<a href='"+item[i].link+"' target='_blank'><img src="+item[i].link+" style='width:95%'></a>";
+				artistphoto += "<br/><br/>";
+			}
+		}
+		else
+		{
+			artistphoto += "<table style='width:950px' align='center'>";
+		
+		artistphoto += "<tr><td valign='top' width='19%'>";
+		if (item[0]==null || item[0].link==null)
+		{
+		}
+		else
+		{
+		artistphoto += "<a href='"+item[0].link+"' target='_blank'><img src="+item[0].link+" style='width:90%'>";
+		artistphoto += "<br/><br/>";
+		}
+		if (item[1]==null || item[1].link==null)
+		{
+			
+		}
+		else
+		{
+			artistphoto += "<a href='"+item[1].link+"' target='_blank'><img src="+item[1].link+" style='width:90%'>";
+		}
+		
+		artistphoto += "</td>";
+		artistphoto += "<td valign='top' width='19%'>";
+		if (item[2]==null || item[2].link==null)
+		{
+		}
+		else
+		{
+			artistphoto += "<a href='"+item[2].link+"' target='_blank'><img src="+item[2].link+" style='width:90%'>";
+		artistphoto += "<br/><br/>";
+		}
+		if (item[3]==null || item[3].link==null)
+		{
+		}
+		else
+		{
+			artistphoto += "<a href='"+item[3].link+"' target='_blank'><img src="+item[3].link+" style='width:90%'>";
+		artistphoto += "<br/><br/>";
+		}
+		if (item[4]==null || item[4].link==null)
+		{
+		}
+		else
+		{
+			artistphoto += "<a href='"+item[4].link+"' target='_blank'><img src="+item[4].link+" style='width:90%'>";
+		}
+		
+		artistphoto += "</td>";
+		artistphoto += "<td valign='top' width='19%'>";
+		if (item[5]==null || item[5].link==null)
+		{
+		}
+		else
+		{artistphoto += "<a href='"+item[5].link+"' target='_blank'><img src="+item[5].link+" style='width:90%'>";
+		artistphoto += "<br/><br/>";
+			
+		}
+		if (item[6]==null || item[6].link==null)
+		{
+		}
+		else
+		{
+			artistphoto += "<a href='"+item[6].link+"' target='_blank'><img src="+item[6].link+" style='width:90%'>";
+		artistphoto += "<br/><br/>";
+		}
+		if (item[7]==null || item[7].link==null)
+		{
+		}
+		else
+		{
+			artistphoto += "<a href='"+item[7].link+"' target='_blank'><img src="+item[7].link+" style='width:90%'>";
+		}
+		
+		artistphoto += "</td></tr></table>";
+		}
+		
+	}
+	
+	
+//	document.getElementById("table4").innerHTML = artistphoto;
+	textPhoto = artistphoto;
+	f3++;
+	if (f1 && (f2==artist.length || catez!="Music")&& f3==artist.length && f4 && f5)
+	{
+		showdetail();
+	}
+	//alert("di2.2")
+
+}
+function loadVenue(jsonObj)
+{
+	//alert("3"+jsonObj)
+
+	jsonObj = JSON.parse(jsonObj);
+	var hang = 0;
+	var text = "";
+	if (jsonObj==null || jsonObj._embedded==null || jsonObj._embedded.venues==null || jsonObj._embedded.venues[0]==null)
+	{
+		
+		if (mobile)
+		{
+			text = "<div style='background-color:Bisque;width:95%'>No records</div>";
+		}
+		else
+		{
+			text = "<div style='background-color:Bisque;width:950px'>No records</div>";
+		}
+		hasVenue = false;
+	}
+	else
+	{
+		var venue = jsonObj._embedded.venues[0];
+		if (venue.name != null)
+		{
+			text += "<div align='center'><b>"+venue.name+"</b></div>"
+			if (mobile)
+		{
+			text += "<table border-top='1' border-bottom='1' width='95%'><tbody>";
+			$("#map").width('95%');
+		}
+		else
+		{
+			text += "<table border-top='1' border-bottom='1' width='950px'><tbody>";
+		}
+			
+		}
+		if (venue.address == null || venue.address.line1==null)
+		{
+		}
+		else
+		{
+			hang ++;
+			if (hang %2 == 1)
+			{
+				text += "<tr  bgcolor='Gainsboro'><td><b>Address</b></td>";
+				text += "<td width='50%'>"+venue.address.line1+"</td></tr>";
+			}
+			else
+			{
+				text += "<tr><td ><b>Address</b></td>";
+				text += "<td width='50%'>"+venue.address.line1+"</td></tr>";
+			}
+			
+		}
+		if ((venue.city == null || venue.city.name==null) && ((venue.state == null || venue.state.name==null)))
+		{
+		}
+		else
+		{
+			hang ++;
+			if (hang %2 == 1)
+			{
+				text += "<tr  bgcolor='Gainsboro'><td><b>City</b></td>";
+				text += "<td width='50%'>";
+				if (venue.city == null || venue.city.name==null)
+				{
+				}
+				else
+				{
+					text += venue.city.name;
+				}
+				if (venue.state == null || venue.state.name==null)
+				{
+				}
+				else
+				{
+					text += ","+venue.state.name;
+				}
+				text += "</td></tr>";
+				
+			}
+			else
+			{
+				text += "<tr><td><b>City</b></td>";
+				text += "<td width='50%'>";
+				if (venue.city == null || venue.city.name==null)
+				{
+				}
+				else
+				{
+					text += venue.city.name;
+				}
+				if (venue.state == null || venue.state.name==null)
+				{
+				}
+				else
+				{
+					text += ","+venue.state.name;
+				}
+				text += "</td></tr>";
+			}
+			
+		}
+		if (venue.boxOfficeInfo == null || venue.boxOfficeInfo.phoneNumberDetail==null)
+		{
+		}
+		else
+		{
+			hang ++;
+			if (hang %2 == 1)
+			{
+				text += "<tr  bgcolor='Gainsboro'><td><b>Phone Number</b></td>";
+				text += "<td width='50%'>"+venue.boxOfficeInfo.phoneNumberDetail+"</td></tr>";
+			}
+			else
+			{
+				text += "<tr><td ><b>Phone Number</b></td>";
+				text += "<td width='50%'>"+venue.boxOfficeInfo.phoneNumberDetail+"</td></tr>";
+			}
+			
+		}
+		if (venue.boxOfficeInfo == null || venue.boxOfficeInfo.openHoursDetail==null)
+		{
+		}
+		else
+		{
+			hang ++;
+			if (hang %2 == 1)
+			{
+				text += "<tr  bgcolor='Gainsboro'><td><b>Open Hours</b></td>";
+				text += "<td width='50%'>"+venue.boxOfficeInfo.openHoursDetail+"</td></tr>";
+			}
+			else
+			{
+				text += "<tr><td><b>Open Hours</b></td>";
+				text += "<td width='50%'>"+venue.boxOfficeInfo.openHoursDetail+"</td></tr>";
+			}
+			
+		}
+		if (venue.generalInfo == null || venue.generalInfo.generalRule==null)
+		{
+		}
+		else
+		{
+			hang ++;
+			if (hang %2 == 1)
+			{
+				text += "<tr  bgcolor='Gainsboro'><td><b>General Rule</b></td>";
+				text += "<td width='50%'>"+venue.generalInfo.generalRule+"</td></tr>";
+			}
+			else
+			{
+				text += "<tr ><td><b>General Rule</b></td>";
+				text += "<td width='50%'>"+venue.generalInfo.generalRule+"</td></tr>";
+			}
+			
+		}
+		if (venue.generalInfo == null || venue.generalInfo.childRule==null)
+		{
+		}
+		else
+		{
+			hang ++;
+			if (hang %2 == 1)
+			{
+				text += "<tr  bgcolor='Gainsboro'><td><b>Child Rule</b></td>";
+				text += "<td width='50%'>"+venue.generalInfo.childRule+"</td></tr>";
+			}
+			else
+			{
+				text += "<tr  ><td><b>Child Rule</b></td>";
+				text += "<td width='50%'>"+venue.generalInfo.childRule+"</td></tr>";
+			}
+			
+		}
+		text += "<tr id='venuebottom'><td></td></tr>";
+		if (venue.location==null || venue.location.longitude==null || venue.location.latitude==null)
+		{
+		
+		}
+		else
+		{
+			//alert(venue.location.latitude);
+			//text += "<div id='map' style='height:300px;width:300px;z-index:1;'></div>";
+			openmap(venue.location.latitude,venue.location.longitude);
+			
+		}
+		text += "</tbody></table>";
+		
+	}
+//	document.getElementById("table5").innerHTML = text;
+	textVenue = text;
+	f4 = true;
+		//alert(f1+","+f2+","+f3+","+f4+","+f5)
+		if (f1 && (f2==artist.length || catez!="Music")&& f3==artist.length && f4 && f5)
+				{
+					showdetail();
+				}
+	//alert("di3")
+}
+function openmap(a,b) {
+  // The location of Uluru
+  	a = parseFloat(a);
+	b = parseFloat(b);
+  var uluru = {lat: a, lng: b};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 15, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+  
+}
+function showmap()
+{
+	//var y = document.getElementById("venuebottom").offsetTop;
+	
+//	y = y + 300;
+	//alert(y);
+	//$("#map").css('top',y);
+	
+		if (hasVenue)
+		{
+		$("#map").css('display','block');
+		}
+	
+}
+function showvenue()
+{
+	
+	showNow = "details";
+	$("#tableX").css('display','none');
+	$("#detail").css('display','none');
+	$("#tablePlus").css('display','none');
+	$("#sortcategory").css('display','none');
+	$("#sortorder").css('display','none');
+	
+	$("#showmore").css('display','none');
+	detailwhat = "Venue";
+	
+	document.getElementById("tableZ").innerHTML = textVenue;
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+}
+var text1 = "";
+var text2 = "";
+var upcominglist;
+function loadUpcoming(jsonObj)
+{
+	
+	//alert(jsonObj.resultsPage.results.event[0].displayName);
+	//alert("4"+jsonObj)
+	 text1 = "";	
+	 text2 = "";
+	text3 = "";
+	text4 = "";
+	upcominglist = [];
+
+	 if (jsonObj=="")
+	 {
+	
+	//	document.getElementById("table6").innerHTML = "<div style='background-color:Bisque;width:950px'>No records</div>";
+		//document.getElementById("table7").innerHTML = "<div style='background-color:Bisque;width:950px'>No records</div>";
+		if (mobile)
+		{
+			text1 = "<div style='background-color:Bisque;width:95%'>No records</div>"
+			text3 = "<div style='background-color:Bisque;width:95%'>No records</div>"
+		}
+		else
+		{
+			text1 = "<div style='background-color:Bisque;width:950px'>No records</div>"
+			text3 = "<div style='background-color:Bisque;width:950px'>No records</div>"
+		}
+			
+		
+		$("#showmore").css('display','none');
+		$("#sortcategory").css('display','none');
+		$("#sortorder").css('display','none');
+		hasUpcoming = false;
+		if (mobile)
+		{
+			textUpcoming1 = "<div style='background-color:Bisque;width:95%'>No records</div>";
+		}
+		else
+		{
+			textUpcoming1 = "<div style='background-color:Bisque;width:950px'>No records</div>";
+		}
+		
+		
+		f5 = true;
+		//alert(f1+","+f2+","+f3+","+f4+","+f5)
+		if (f1 && (f2==artist.length || catez!="Music")&& f3==artist.length && f4 && f5)
+				{
+					showdetail();
+				}
+				  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+		return;
+	 }
+	 jsonObj = JSON.parse(jsonObj);
+	 
+	upcominglist = jsonObj;
+
+	if (jsonObj==null || jsonObj.resultsPage==null || jsonObj.resultsPage.results==null || jsonObj.resultsPage.results.event==null)
+	{
+		if (mobile)
+		{
+			text1 = "<div style='background-color:Bisque;width:95%'>No records</div>"
+		}
+		else
+		{
+			text1 = "<div style='background-color:Bisque;width:950px'>No records</div>"
+		}
+		
+		
+		
+		$("#showmore").css('display','none');
+		$("#sortcategory").css('display','none');
+		$("#sortorder").css('display','none');
+		hasUpcoming = false;
+	}
+	else
+	{
+		var event = jsonObj.resultsPage.results.event;
+
+		//alert(event[43].displayName);
+		text1 += "<br/><br/>";
+		for (i=0;i<Math.min(5,event.length);i++)
+		{
+			
+			if (mobile)
+		{
+			text1 += "<div style='border:1px solid Gainsboro;width:95%;height:200px' align='left'>";
+		}
+		else
+		{
+			text1 += "<div style='border:1px solid Gainsboro;width:950px;height:100px' align='left'>";
+		}
+			if (event[i] == null || event[i].displayName==null)
+			{
+			}
+			else
+			{
+				if (event[i].uri != null)
+				{
+					text1 += "<a href='"+event[i].uri+"' target='_blank'>"+event[i].displayName+"</a><br/>";
+				}
+			}
+			if (event[i]==null || event[i].performance==null || event[i].performance[0]==null || event[i].performance[0].displayName==null)
+			{
+			}
+			else
+			{
+				text1 += "<font color='orange'>Artist: "+event[i].performance[0].displayName+"</font>";
+				text1 += "&nbsp &nbsp";
+			}
+			if (event[i].start != null)
+			{
+				text1 += "<font color='grey'>";
+				if (event[i].start.date!=null)
+				{
+					
+					text1 += moment(event[i].start.date).format("MMM DD, YYYY")+" ";
+				}
+				if (event[i].start.time != null)
+				{
+					text1 += event[i].start.time;
+				}
+				text1 += "<br/></font>";
+			}
+			if (event[i].type != null)
+			{
+				text1 += "Type: "+event[i].type;
+			}
+			text1 += "</div><br/>";
+			
+		}
+		for (i=6;i < event.length;i++)
+		{
+			if (mobile)
+		{
+			text2 += "<div style='border:1px solid Gainsboro;width:95%;height:200px' align='left'>";
+		}
+		else
+		{
+			text2 += "<div style='border:1px solid Gainsboro;width:950px;height:100px' align='left'>";
+		}
+			
+			
+			if (event[i] == null || event[i].displayName==null)
+			{
+			}
+			else
+			{
+				if (event[i].uri != null)
+				{
+					text2 += "<a href='"+event[i].uri+"' target='_blank'>"+event[i].displayName+"</a><br/>";
+				}
+			}
+			if (event[i]==null || event[i].performance==null || event[i].performance[0]==null || event[i].performance[0].displayName==null)
+			{
+			}
+			else
+			{
+				text2 += "<font color='orange'>Artist: "+event[i].performance[0].displayName+"</font>";
+				text2 += "&nbsp &nbsp";
+			}
+			if (event[i].start != null)
+			{
+				text2 += "<font color='grey'>";
+				if (event[i].start.date!=null)
+				{
+					
+					text2 += moment(event[i].start.date).format("MMM DD, YYYY")+" ";
+				}
+				if (event[i].start.time != null)
+				{
+					text2 += event[i].start.time;
+				}
+				text2 += "<br/></font>";
+			}
+			if (event[i].type != null)
+			{
+				text2 += "Type: "+event[i].type;
+			}
+			text2 += "</div><br/>";
+			
+		}
+		
+	}
+	
+//	document.getElementById("table6").innerHTML = text1;
+	textUpcoming1 = text1;
+	f5 = true;
+		//alert(f1+","+f2+","+f3+","+f4+","+f5)
+		if (f1 && (f2==artist.length || catez!="Music")&& f3==artist.length && f4 && f5)
+				{
+					showdetail();
+				}
+	//alert("di4")
+	//document.getElementById("table6").innerHTML += text2;
+	//$("#table2").css('display','none');
+	//$("#table6").css('display','block');
+	
+}
+function showmoreorless()
+{
+
+	if ($("#showmore").val() == "Show More")
+	{
+		$("#showmore").val("Show Less");
+		if ($("#sortcategory").val() == "Default")
+		{
+			//document.getElementById("table6").innerHTML = text1 + text2;
+		//	document.getElementById("table6").innerHTML = text1;
+		//	document.getElementById("table8").innerHTML = text2;
+			document.getElementById("tableZ").innerHTML = text1;
+			document.getElementById("tablePlus").innerHTML = text2;
+			textUpcoming1 = text1;
+			textUpcoming2 = text2;
+			$("#tableZ").css('display','block');
+			$("#tablePlus").css('display','block');
+		}
+		else
+		{
+		
+			//document.getElementById("table6").innerHTML = text3 + text4;
+		//	document.getElementById("table6").innerHTML = text3;
+		//	document.getElementById("table8").innerHTML = text4;
+			document.getElementById("tableZ").innerHTML = text3;
+			document.getElementById("tablePlus").innerHTML = text4;
+			textUpcoming1 = text3;
+			textUpcoming2 = text4;
+			$("#tableZ").css('display','block');
+			$("#tablePlus").css('display','block');
+		}
+		
+	}
+	else
+	{
+		
+		$("#showmore").val("Show More");
+		
+		if ($("#sortcategory").val() == "Default")
+		{
+		//	document.getElementById("table6").innerHTML = text1;
+			document.getElementById("tableZ").innerHTML = text1;
+			textUpcoming1 = text1;
+			$("#tablePlus").css('display','none');
+		}
+		else
+		{
+		//	document.getElementById("table6").innerHTML = text3;
+			document.getElementById("tableZ").innerHTML = text3;
+			textUpcoming1 = text3;
+			$("#tablePlus").css('display','none');
+		}
+	
+	}
+	//(document.querySelector('.animate-show').id);
+	//alert( $(".animate-show").html())
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+}
+function showupcoming()
+{
+	
+	
+	showNow = "details";
+	$("#table").css('display','none');
+	$("#detail").css('display','none');
+	
+	
+	$("#map").css('display','none');
+	
+	$("#table6").css('display','block');
+	$("#table8").css('display','block');
+	if ($("#showmore").val() == "Show Less")
+	{
+		$("#tablePlus").css('display','block');
+	}
+	else
+	{
+		$("#tablePlus").css('display','none');
+	}
+	if (hasUpcoming)
+	{
+	$("#showmore").css('display','block');
+	$("#sortcategory").css('display','block');
+	$("#sortorder").css('display','block');
+	}
+	detailwhat = "Upcoming Events";
+	//alert($("#wrapper").animate)
+	document.getElementById("tableZ").innerHTML = textUpcoming1;
+	document.getElementById("tablePlus").innerHTML = textUpcoming2;
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+}
+var text3 = "";
+var text4 = "";
+function sortbycategory()
+{
+
+	if ($("#sortcategory").val() != "Default")
+	{
+		text3 = "";
+		text4 = "";
+		$("#sortorder").removeAttr('disabled');
+		var jsonObj = upcominglist;
+		
+		
+		
+		if (jsonObj==null || jsonObj.resultsPage==null || jsonObj.resultsPage.results==null || jsonObj.resultsPage.results.event==null)
+	{
+		if (mobile)
+		{
+			text3 = "<div style='background-color:Bisque;width:95%'>No records</div>"
+		}
+		else
+		{
+			text3 = "<div style='background-color:Bisque;width:950px'>No records</div>"
+		}
+		
+		
+	}
+	else
+	{
+		var colId;
+		var desc = function(x,y)
+		{
+			return (x[colId] < y[colId]) ? 1 : -1
+		}
+
+		var asc = function(x,y)
+		{
+			return (x[colId] > y[colId]) ? 1 : -1
+		}
+		var descTime = function(x,y)
+		{
+			return (x[colId].date < y[colId].date) ? 1 : -1
+			return (x[colId].time < y[colId].time) ? 1 : -1
+		}
+
+		var ascTime = function(x,y)
+		{
+			return (x[colId].date > y[colId].date) ? 1 : -1
+			return (x[colId].time > y[colId].time) ? 1 : -1
+		}
+		if ($("#sortcategory").val() == "Event Name")
+		{
+			colId = "displayName";
+			if ($("#sortorder").val() == "Ascending")
+			{
+				jsonObj.resultsPage.results.event.sort(asc);
+			}
+			else
+			{
+				jsonObj.resultsPage.results.event.sort(desc);
+			}
+		}
+		if ($("#sortcategory").val() == "Time")
+		{
+			colId = "start";
+			if ($("#sortorder").val() == "Ascending")
+			{
+				jsonObj.resultsPage.results.event.sort(ascTime);
+			}
+			else
+			{
+				jsonObj.resultsPage.results.event.sort(descTime);
+			}
+		}
+		var descArtist = function(x,y)
+		{
+			if (x.performance==null || x.performance[0]==null || x.performance[0].displayName==null || y.performance==null || y.performance[0]==null || y.performance[0].displayName==null)
+			{
+				return 1
+			}
+			return (x.performance[0].displayName < y.performance[0].displayName) ? 1 : -1
+		
+		}
+
+		var ascArtist = function(x,y)
+		{
+			if (x.performance==null || x.performance[0]==null || x.performance[0].displayName==null || y.performance==null || y.performance[0]==null || y.performance[0].displayName==null)
+			{
+				return 1
+			}
+			return (x.performance[0].displayName > y.performance[0].displayName) ? 1 : -1
+			
+		}
+		if ($("#sortcategory").val() == "Artist")
+		{
+	
+			if ($("#sortorder").val() == "Ascending")
+			{
+				jsonObj.resultsPage.results.event.sort(ascArtist);
+			}
+			else
+			{
+				jsonObj.resultsPage.results.event.sort(descArtist);
+			}
+		}
+		var descType = function(x,y)
+		{
+			return (x[colId] < y[colId]) ? 1 : -1
+		
+		}
+
+		var ascType = function(x,y)
+		{
+			return (x[colId] > y[colId]) ? 1 : -1
+		}
+		if ($("#sortcategory").val() == "Type")
+		{
+			
+			colId = "type";
+			if ($("#sortorder").val() == "Ascending")
+			{
+				jsonObj.resultsPage.results.event.sort(ascType);
+			}
+			else
+			{
+				jsonObj.resultsPage.results.event.sort(descType);
+			}
+		}
+		var event = jsonObj.resultsPage.results.event;
+		//alert(event[43].displayName);
+		//text1 += "<br/><br/>";
+		for (i=0;i<Math.min(5,event.length);i++)
+		{
+			
+			if (mobile)
+		{
+			text3 += "<div style='border:1px solid Gainsboro;width:95%;height:200px' align='left'>";
+		}
+		else
+		{
+			text3 += "<div style='border:1px solid Gainsboro;width:950px;height:100px' align='left'>";
+		}
+		
+			if (event[i] == null || event[i].displayName==null)
+			{
+			}
+			else
+			{
+				if (event[i].uri != null)
+				{
+					text3 += "<a href='"+event[i].uri+"' target='_blank'>"+event[i].displayName+"</a><br/>";
+				}
+			}
+			if (event[i]==null || event[i].performance==null || event[i].performance[0]==null || event[i].performance[0].displayName==null)
+			{
+			}
+			else
+			{
+				text3 += "<font color='orange'>Artist: "+event[i].performance[0].displayName+"</font>";
+				text3 += "&nbsp &nbsp";
+			}
+			if (event[i].start != null)
+			{
+				text3 += "<font color='grey'>";
+				if (event[i].start.date!=null)
+				{
+					
+					text3 += moment(event[i].start.date).format("MMM DD, YYYY")+" ";
+				}
+				if (event[i].start.time != null)
+				{
+					text3 += event[i].start.time;
+				}
+				text3 += "<br/></font>";
+			}
+			if (event[i].type != null)
+			{
+				text3 += "Type: "+event[i].type;
+			}
+			text3 += "</div><br/>";
+			
+		}
+		for (i=6;i < event.length;i++)
+		{
+			
+			if (mobile)
+		{
+			text4 += "<div style='border:1px solid Gainsboro;width:95%;height:200px' align='left'>";
+		}
+		else
+		{
+			text4 += "<div style='border:1px solid Gainsboro;width:950px;height:100px' align='left'>";
+		}
+		
+			if (event[i] == null || event[i].displayName==null)
+			{
+			}
+			else
+			{
+				if (event[i].uri != null)
+				{
+					text4 += "<a href='"+event[i].uri+"' target='_blank'>"+event[i].displayName+"</a><br/>";
+				}
+			}
+			if (event[i]==null || event[i].performance==null || event[i].performance[0]==null || event[i].performance[0].displayName==null)
+			{
+			}
+			else
+			{
+				text4 += "<font color='orange'>Artist: "+event[i].performance[0].displayName+"</font>";
+				text4 += "&nbsp &nbsp";
+			}
+			if (event[i].start != null)
+			{
+				text4 += "<font color='grey'>";
+				if (event[i].start.date!=null)
+				{
+					
+					text4 += moment(event[i].start.date).format("MMM DD, YYYY")+" ";
+				}
+				if (event[i].start.time != null)
+				{
+					text4 += event[i].start.time;
+				}
+				text4 += "<br/></font>";
+			}
+			if (event[i].type != null)
+			{
+				text4 += "Type: "+event[i].type;
+			}
+			text4 += "</div><br/>";
+			
+		}
+		
+	}
+	if ($("#showmore").val() == "Show Less")
+	{
+	
+		//document.getElementById("table6").innerHTML = text3 + text4;
+	//	document.getElementById("table6").innerHTML = text3;
+	//	document.getElementById("table8").innerHTML = text4;
+		document.getElementById("tableZ").innerHTML = text3;
+		document.getElementById("tablePlus").innerHTML = text4;
+		textUpcoming1 = text3;
+		textUpcoming2 = text4;
+	//	$("#table6").css('display','block');
+	//	$("#table8").css('display','block');
+	}
+	else
+	{
+	//	document.getElementById("table6").innerHTML = text3;
+		document.getElementById("tableZ").innerHTML = text3;
+		textUpcoming1 = text3;
+	//	$("#table6").css('display','block');
+	//	$("#table8").css('display','none');
+	}
+	//jsonObj.resultsPage.results.event.sort(desc);
+		//alert(text3);
+	}
+	else
+	{
+		$("#sortorder").attr('disabled','true');
+	
+		if ($("#showmore").val() == "Show Less")
+		{
+			//document.getElementById("table6").innerHTML = text1 + text2;
+		//	document.getElementById("table6").innerHTML = text1;
+	//	document.getElementById("table8").innerHTML = text2;
+		document.getElementById("tableZ").innerHTML = text1;
+		document.getElementById("tablePlus").innerHTML = text2;
+		textUpcoming1 = text1;
+		textUpcoming2 = text2;
+		//$("#table6").css('display','block');
+		//$("#table8").css('display','block');
+		}
+		else
+		{
+		//	document.getElementById("table6").innerHTML = text1;
+			document.getElementById("tableZ").innerHTML = text1;
+			textUpcoming1 = text1;
+		//	$("#table6").css('display','block');
+		//	$("#table8").css('display','none');
+		}
+	}
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+}
+function sortbyorder()
+{
+	
+		text3 = "";
+		text4 = "";
+		
+		var jsonObj = upcominglist;
+		
+		if (jsonObj==null || jsonObj.resultsPage==null || jsonObj.resultsPage.results==null || jsonObj.resultsPage.results.event==null)
+	{
+		
+		if (mobile)
+		{
+			text3 = "<div style='background-color:Bisque;width:95%'>No records</div>"
+		}
+		else
+		{
+			text3 = "<div style='background-color:Bisque;width:950px'>No records</div>"
+		}
+		
+	}
+	else
+	{
+		var colId;
+		var desc = function(x,y)
+		{
+			return (x[colId] < y[colId]) ? 1 : -1
+		}
+
+		var asc = function(x,y)
+		{
+			return (x[colId] > y[colId]) ? 1 : -1
+		}
+
+		if ($("#sortcategory").val() == "Event Name")
+		{
+			colId = "displayName";
+			if ($("#sortorder").val() == "Ascending")
+			{
+				jsonObj.resultsPage.results.event.sort(asc);
+			}
+			else
+			{
+				jsonObj.resultsPage.results.event.sort(desc);
+			}
+		}
+		var descTime = function(x,y)
+		{
+			return (x[colId].date < y[colId].date) ? 1 : -1
+			return (x[colId].time < y[colId].time) ? 1 : -1
+		}
+
+		var ascTime = function(x,y)
+		{
+			return (x[colId].date > y[colId].date) ? 1 : -1
+			return (x[colId].time > y[colId].time) ? 1 : -1
+		}
+		
+		if ($("#sortcategory").val() == "Time")
+		{
+			colId = "start";
+			if ($("#sortorder").val() == "Ascending")
+			{
+				jsonObj.resultsPage.results.event.sort(ascTime);
+			}
+			else
+			{
+				jsonObj.resultsPage.results.event.sort(descTime);
+			}
+		}
+		var descArtist = function(x,y)
+		{
+			if (x.performance==null || x.performance[0]==null || x.performance[0].displayName==null || y.performance==null || y.performance[0]==null || y.performance[0].displayName==null)
+			{
+				return 1
+			}
+			return (x.performance[0].displayName < y.performance[0].displayName) ? 1 : -1
+		
+		}
+
+		var ascArtist = function(x,y)
+		{
+			if (x.performance==null || x.performance[0]==null || x.performance[0].displayName==null || y.performance==null || y.performance[0]==null || y.performance[0].displayName==null)
+			{
+				return 1
+			}
+			return (x.performance[0].displayName > y.performance[0].displayName) ? 1 : -1
+			
+		}
+		if ($("#sortcategory").val() == "Artist")
+		{
+	
+			if ($("#sortorder").val() == "Ascending")
+			{
+				jsonObj.resultsPage.results.event.sort(ascArtist);
+			}
+			else
+			{
+				jsonObj.resultsPage.results.event.sort(descArtist);
+			}
+		}
+		var descType = function(x,y)
+		{
+			return (x["type"] < y["type"]) ? 1 : -1
+		
+		}
+
+		var ascType = function(x,y)
+		{
+			return (x["type"] > y["type"]) ? 1 : -1
+			
+		}
+		if ($("#sortcategory").val() == "Type")
+		{
+	
+			if ($("#sortorder").val() == "Ascending")
+			{
+				jsonObj.resultsPage.results.event.sort(ascType);
+			}
+			else
+			{
+				jsonObj.resultsPage.results.event.sort(descType);
+			}
+		}
+		var event = jsonObj.resultsPage.results.event;
+		//alert(event[43].displayName);
+		//text1 += "<br/><br/>";
+		for (i=0;i<Math.min(5,event.length);i++)
+		{
+			
+			if (mobile)
+		{
+			text3 += "<div style='border:1px solid Gainsboro;width:95%;height:200px' align='left'>";
+		}
+		else
+		{
+			text3 += "<div style='border:1px solid Gainsboro;width:950px;height:100px' align='left'>";
+		}
+			if (event[i] == null || event[i].displayName==null)
+			{
+			}
+			else
+			{
+				if (event[i].uri != null)
+				{
+					text3 += "<a href='"+event[i].uri+"' target='_blank'>"+event[i].displayName+"</a><br/>";
+				}
+			}
+			if (event[i]==null || event[i].performance==null || event[i].performance[0]==null || event[i].performance[0].displayName==null)
+			{
+			}
+			else
+			{
+				text3 += "<font color='orange'>Artist: "+event[i].performance[0].displayName+"</font>";
+				text3 += "&nbsp &nbsp";
+			}
+			if (event[i].start != null)
+			{
+				text3 += "<font color='grey'>";
+				if (event[i].start.date!=null)
+				{
+					
+					text3 += moment(event[i].start.date).format("MMM DD, YYYY")+" ";
+				}
+				if (event[i].start.time != null)
+				{
+					text3 += event[i].start.time;
+				}
+				text3 += "<br/></font>";
+			}
+			if (event[i].type != null)
+			{
+				text3 += "Type: "+event[i].type;
+			}
+			text3 += "</div><br/>";
+			
+		}
+		for (i=6;i < event.length;i++)
+		{
+			
+			if (mobile)
+		{
+			text4 += "<div style='border:1px solid Gainsboro;width:95%;height:200px' align='left'>";
+		}
+		else
+		{
+			text4 += "<div style='border:1px solid Gainsboro;width:950px;height:100px' align='left'>";
+		}
+			if (event[i] == null || event[i].displayName==null)
+			{
+			}
+			else
+			{
+				if (event[i].uri != null)
+				{
+					text4 += "<a href='"+event[i].uri+"' target='_blank'>"+event[i].displayName+"</a><br/>";
+				}
+			}
+			if (event[i]==null || event[i].performance==null || event[i].performance[0]==null || event[i].performance[0].displayName==null)
+			{
+			}
+			else
+			{
+				text4 += "<font color='orange'>Artist: "+event[i].performance[0].displayName+"</font>";
+				text4 += "&nbsp &nbsp";
+			}
+			if (event[i].start != null)
+			{
+				text4 += "<font color='grey'>";
+				if (event[i].start.date!=null)
+				{
+					
+					text4 += moment(event[i].start.date).format("MMM DD, YYYY")+" ";
+				}
+				if (event[i].start.time != null)
+				{
+					text4 += event[i].start.time;
+				}
+				text4 += "<br/></font>";
+			}
+			if (event[i].type != null)
+			{
+				text4 += "Type: "+event[i].type;
+			}
+			text4 += "</div><br/>";
+			
+		}
+		
+	}
+	if ($("#showmore").val() == "Show Less")
+	{
+	
+		//document.getElementById("table6").innerHTML = text3 + text4;
+	//	document.getElementById("table6").innerHTML = text3;
+	//	document.getElementById("table8").innerHTML = text4;
+		document.getElementById("tableZ").innerHTML = text3;
+		document.getElementById("tablePlus").innerHTML = text4;
+		textUpcoming1 = text3;
+		textUpcoming2 = text4;
+	//	$("#table6").css('display','block');
+		//$("#table8").css('display','block');
+	}
+	else
+	{
+	//	document.getElementById("table6").innerHTML = text3;
+		document.getElementById("tableZ").innerHTML = text3;
+		textUpcoming1 = text3;
+	//	$("#table6").css('display','block');
+	//	$("#table8").css('display','none');
+	}
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+}
+function cl()
+{
+	showNow = "";
+	hasUpcoming = true;
+	hasVenue = true;
+	$("#fourbuttons").css('display','none');
+	$("#eventtitle").css('display','none');
+	$("#tableX").css('display','none');
+	$("#tableY").css('display','none');
+	$("#tableZ").css('display','none');
+	$("#tablePlus").css('display','none');
+	
+	$("#sortcategory").css('display','none');
+	$("#sortorder").css('display','none');
+	
+	$("#map").css('display','none');
+	$("#showmore").css('display','none');
+	document.getElementById("showmore").value = "Show More";
+	$("#sortcategory").val("Default");
+	$("#sortorder").val("Ascending");
+	$("#sortorder").attr("disabled","true");
+	$("#2").attr("disabled","true");
+	$("#2").removeClass("is-invalid");
+	$("#submit").attr("disabled","true");
+	 $("#keyword").addClass("is-invalid");
+	  $("#wrongkeyword").css('display','block')
+	$("#seatpic").css('display','none');
+	$("#results").removeClass("btn-outline-primary");
+	$("#results").addClass("btn-primary");
+	$("#favorites").removeClass("btn-primary");
+	$("#favorites").addClass("btn-outline-primary");
+	$("#detail").css('display','none');
+	$("#threebutton").css('display','none');
+	$("#detail").attr("disabled","true");
+	
+	textUpcoming1 = "";
+	textUpcoming2 = "";	
+	textResults = "";
+	textEvent = "";
+	textPhoto = "";
+	textVenue = "";
+	if (mobile)
+	{
+		document.getElementById("tableX").innerHTML = "<div style='background-color:Bisque;width:95%'>No records</div>";
+	}
+	else
+	{
+		document.getElementById("tableX").innerHTML = "<div style='background-color:Bisque;width:950px'>No records</div>";
+	}
+	
+	$("#fourevent").addClass("active");
+	$("#fourartist").removeClass("active");
+	$("#fourvenue").removeClass("active");
+	$("#fourupcoming").removeClass("active");
+	$("#progressbar").css('display','none');
+	//document.getElementById("table").innerHTML = "<div style='background-color:Bisque;width:950px'>No records</div>";
+	auto = new Array();
+	upcominglist = [];
+	if (mobile)
+	{
+		text1 = "<div style='background-color:Bisque;width:95%'>No records</div>";
+	}
+	else
+	{
+		text1 = "<div style='background-color:Bisque;width:950px'>No records</div>";
+	}
+	
+	
+	text2 = "";
+	if (mobile)
+	{
+		text3 = "<div style='background-color:Bisque;width:95%'>No records</div>";
+	}
+	else
+	{
+		text3 = "<div style='background-color:Bisque;width:950px'>No records</div>";
+	}
+	
+	text4 = "";
+	f1 = false;
+f2 = 0;
+f3 = 0;
+f4 = false;
+f5 = false;
+catez = "";
+  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+	//var appElement = document.querySelector('[ng-controller=moveLeft]');
+//	var $scope = angular.element(appElement).scope(); 
+	//$scope.left = false;
+	//$scope.$apply();
+}
+function chooseResult()
+{
+	var flag = true;
+/*	if (showNow == "details")
+	{
+		$("#tableX").addClass('animate1-show');
+		$("#detail").addClass('detail-show');
+	
+	}
+	else
+	{
+		$("#tableX").removeClass('animate1-show');
+		$("#detail").removeClass('detail-show');
+	
+	}*/
+	//showNow = "list";
+	if ("Favorites" != $(".btn-outline-primary").html())
+	{
+		for (i=0;i<searchnum;i++)
+		{
+			$("#hang"+i).css('background-color','');
+		}
+		$("#detail").attr('disabled','true');
+		flag = false;
+		
+	}
+	$("#results").addClass("btn-primary");
+	$("#results").removeClass("btn-outline-primary");
+	$("#favorites").removeClass("btn-primary");
+	$("#favorites").addClass("btn-outline-primary");
+	
+	$("#fourbuttons").css('display','none');
+		$("#eventtitle").css('display','none');
+		$("#tableX").css('display','block');
+		$("#tableY").css('display','none');
+		$("#tableZ").css('display','none');
+		$("#tablePlus").css('display','none');
+	
+		$("#sortcategory").css('display','none');
+		$("#sortorder").css('display','none');
+		
+		$("#map").css('display','none');
+		$("#showmore").css('display','none');
+		$("#seatpic").css('display','none');
+		$("#detail").css('display','block');
+		$("#threebutton").css('display','none');
+		
+	var fid;
+	
+	fid = JSON.parse(localStorage.getItem('favid'));
+	if (fid != null)
+	{
+		for (i=0;i<resid.length;i++)
+		{
+			if (fid.indexOf(resid[i]) == -1)
+			{
+				document.getElementById("star"+resid[i]).innerHTML = "star_border";
+				$("#star"+resid[i]).css('color','');
+			}
+			else
+			{
+				document.getElementById("star"+resid[i]).innerHTML = "star";
+				$("#star"+resid[i]).css('color','Gold');
+			}
+		}
+	}
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+}
+function chooseFavorite()
+{
+	
+	
+
+	//showNow = "list";
+	var flag = true;
+	if ("Favorites" == $(".btn-outline-primary").html())
+	{
+		
+		$("#detail").attr('disabled','true');
+		toyellow = "";
+		flag = false;
+		
+	}
+	$("#results").removeClass("btn-primary");
+	$("#results").addClass("btn-outline-primary");
+	$("#favorites").addClass("btn-primary");
+	$("#favorites").removeClass("btn-outline-primary");
+	
+	var fid;
+	var flist
+	fid = JSON.parse(localStorage.getItem('favid'));
+	flist = JSON.parse(localStorage.getItem('favlist'));
+	
+	//alert(flist);
+	var text = "";
+
+	if (fid!=null && fid.length!=0)
+	{
+	if (mobile)
+	{
+		text += "<table width=1500px;><tbody>";
+		//text += "<table width=950px;><tbody>";
+	}
+	else
+	{
+		text += "<table width=950px;><tbody>";
+	}
+	
+	var biaotou = ["#","Date","Event","Category","Venue Info","Favorite"];
+	for (i=0;i<6;i++)
+		text += "<th>"+biaotou[i]+"</th>";
+	for (i=0;i<flist.length;i++)
+	{
+	
+		text += flist[i];
+	}
+	text += "</tbody></table>";
+	//alert(text);
+	$("#tableX").css('display','none');
+	$("#tableY").css('display','block');
+	$("#tableZ").css('display','none');
+	$("#tablePlus").css('display','none');
+	
+	$("#fourbuttons").css('display','none');
+		$("#eventtitle").css('display','none');
+		
+		$("#sortcategory").css('display','none');
+		$("#sortorder").css('display','none');
+	
+		$("#map").css('display','none');
+		$("#showmore").css('display','none');
+		$("#seatpic").css('display','none');
+		$("#detail").css('display','block');
+		$("#threebutton").css('display','none');
+
+	
+	
+	//$(fav2yellow).css('display','block');
+//	document.getElementById("table7").innerHTML = text;
+	document.getElementById("tableY").innerHTML = text;
+	textFavorites = text;
+	
+	if (flag)
+	{
+		$(toyellow).css('background-color','Bisque');
+	}
+	for (i=0;i<fid.length;i++)
+	{
+	
+		document.getElementById("index"+fid[i]).innerHTML = i+1;
+	}
+	
+	//alert(text);
+	$('[data-toggle="tooltip"]').tooltip();  
+	}
+	else
+	{
+	
+		$("#tableX").css('display','none');
+	$("#tableY").css('display','block');
+	$("#tableZ").css('display','none');
+	$("#tablePlus").css('display','none');
+
+	$("#fourbuttons").css('display','none');
+		$("#eventtitle").css('display','none');
+		
+		$("#sortcategory").css('display','none');
+		$("#sortorder").css('display','none');
+		
+		$("#map").css('display','none');
+		$("#showmore").css('display','none');
+		$("#seatpic").css('display','none');
+		$("#detail").css('display','block');
+		$("#threebutton").css('display','none');
+
+	
+	
+	//$(fav2yellow).css('display','block');
+	//	document.getElementById("table7").innerHTML = "<div style='background-color:Bisque;width:950px'>No records</div>";
+	if (mobile)
+	{
+		document.getElementById("tableY").innerHTML = "<div style='background-color:Bisque;width:95%'>No records</div>";
+	}
+	else
+	{
+		document.getElementById("tableY").innerHTML = "<div style='background-color:Bisque;width:950px'>No records</div>";
+	}
+	if (mobile)
+	{
+		textFavorites = "<div style='background-color:Bisque;width:95%'>No records</div>";
+	}
+	else
+	{
+		textFavorites = "<div style='background-color:Bisque;width:950px'>No records</div>";
+	}
+		
+		
+	
+	//alert(text);
+	$('[data-toggle="tooltip"]').tooltip();  
+	}
+	//alert(fid);
+	//alert(flist);
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+}
+function twit()
+{
+	//alert(eventname);
+	//alert(venuename);
+	var twittertext = "";
+	twittertext = "Check out "+eventname +" located at "+venuename+". Website: "+eventurl+" #CSCI571EventSearch";
+	//twittertext = "Check%20out%2089.9%20KCRW%20Presents:%20Christine%20&%20The%20Queens%20located%20at%20The%20Wiltern.%20Website:%20http://concerts.livenation.com/event/09005473CB9F4021%20#CSCI571EventSearch";
+	
+	
+	window.open('https://twitter.com/intent/tweet?text='+escape(twittertext));
+}
+function showlist()
+{
+
+	//showNow = "list";
+	
+	
+	if ("Favorites" == $(".btn-outline-primary").html())
+	{
+		$("#fourbuttons").css('display','none');
+		$("#eventtitle").css('display','none');
+		$("#tableX").css('display','block');
+		$("#tableY").css('display','none');
+		$("#tableZ").css('display','none');
+		$("#tablePlus").css('display','none');
+	
+		$("#sortcategory").css('display','none');
+		$("#sortorder").css('display','none');
+		
+		$("#map").css('display','none');
+		$("#showmore").css('display','none');
+		$("#seatpic").css('display','none');
+		$("#detail").css('display','block');
+		$("#threebutton").css('display','none');
+		
+		var fid;
+	
+	fid = JSON.parse(localStorage.getItem('favid'));
+	if (fid != null)
+	{
+		for (i=0;i<resid.length;i++)
+		{
+			if (fid.indexOf(resid[i]) == -1)
+			{
+				document.getElementById("star"+resid[i]).innerHTML = "star_border";
+				$("#star"+resid[i]).css('color','');
+			}
+			else
+			{
+				document.getElementById("star"+resid[i]).innerHTML = "star";
+				$("#star"+resid[i]).css('color','Gold');
+			}
+		}
+	}
+		//document.getElementById("showmore").value = "Show More";
+		//$("#sortcategory").val("Default");
+		//$("#sortorder").val("Ascending");
+		//$("#sortorder").attr("disabled","true");
+		//$("#2").attr("disabled","true");
+		//$("#2").removeClass("is-invalid");
+		//$("#submit").attr("disabled","true");
+		//$("#keyword").addClass("is-invalid");
+		
+		//$("#results").removeClass("btn-outline-primary");
+		//$("#results").addClass("btn-primary");
+		//$("#favorites").removeClass("btn-primary");
+		//$("#favorites").addClass("btn-outline-primary");
+		
+	}
+	else
+	{
+		$("#fourbuttons").css('display','none');
+		$("#eventtitle").css('display','none');
+		$("#tableX").css('display','none');
+		$("#tableY").css('display','block');
+		$("#tableZ").css('display','none');
+		$("#tablePlus").css('display','none');
+		
+		$("#sortcategory").css('display','none');
+		$("#sortorder").css('display','none');
+		
+		$("#map").css('display','none');
+		$("#showmore").css('display','none');
+		$("#seatpic").css('display','none');
+		$("#detail").css('display','block');
+		$("#threebutton").css('display','none');
+	}
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+}
+var detailwhat = "";
+var hasUpcoming = true;
+var hasVenue = true;
+function displaydetail()
+{
+	
+	//showNow = "details";
+	$("#tableX").css('display','none');
+	$("#detail").css('display','none');
+	$("#eventtitle").css('display','block');
+	$("#threebutton").css('display','block');
+	$("#fourbuttons").css('display','block');
+	$("#tableY").css('display','none');
+	$("#tableZ").css('display','block');
+	if (detailwhat == "Event")
+	{
+		
+		
+	}
+	if (detailwhat == "Artist/Teams")
+	{
+		
+	}
+	if (detailwhat == "Venue")
+	{
+		if (hasVenue)
+		{
+		$("#map").css('display','block');
+		}
+	}
+	if (detailwhat == "Upcoming Events")
+	{
+		if (hasUpcoming)
+		{
+		$("#tablePlus").css('display','block');
+		if ($("#showmore").val() == "Show More")
+		{
+			$("#tablePlus").css('display','none');
+		}
+		else
+		{
+			$("#tablePlus").css('display','block');
+		}
+		$("#showmore").css('display','block');
+		$("#sortcategory").css('display','block');
+		$("#sortorder").css('display','block');
+		}
+	}
+	var fid;
+	
+	fid = JSON.parse(localStorage.getItem('favid'));
+	var x = eventID;
+	if (fid != null)
+	{
+		
+			if (fid.indexOf(x) == -1)
+			{
+				document.getElementById("star").innerHTML = "star_border";
+				$("#star").css('color','');
+			}
+			else
+			{
+				document.getElementById("star").innerHTML = "star";
+				$("#star").css('color','Gold');
+			}
+		
+	}
+	  if (mobile) 
+	{
+		$("*").css('font-size','25')
+	}
+}
+function cancelauto()
+{
+	$("#autolist").css('display','none');
+	$("md-autocomplete-wrap").css('border-color','white')
+}	
+function changeBlue()
+{
+	if ($("#keyword").hasClass('is-invalid'))
+	{
+	
+		$("md-autocomplete-wrap").css('border-color','#dc3545')
+		$("md-autocomplete-wrap").css('border-width','2')
+	}
+	else
+	{
+		$("md-autocomplete-wrap").css('border-color','#80bdff')
+		$("md-autocomplete-wrap").css('border-width','2')
+	}
+	
+	
+}
+</script>
+<style>
+
+</style>
+</head>
+<body onclick="cancelauto();" ng-app="findTickets" style="background-color:transparent">
+
+
+<div align="center" >
+<div id="mobilegrey" style="background-color:WhiteSmoke;
+border: medium double black;width:950px;height:380px">
+<div align='center'><font size = '3'> Entertainment Event Ticket Search</font></div>
+<FORM  ACTION=""  id="form" >
+
+<font size=2>
+<div id="mobileform" align="left" style="margin-left:25%;">
+
+
+
+Keyword <font color=red>*&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</font> 
+
+<div ng-app="StarterApp" ng-controller="AppCtrl" style="width:0px;" id="keyword" class="is-invalid ">
+
+<md-autocomplete style="width:400px;"
+onclick =setTimeout("changeBlue()",200);
+
+oninput="input()"
+  md-search-text="searchText"        
+  md-items="name in res"      
+  	md-selected-item-change="fill(searchText)"
+	md-search-text-change="hh(searchText)"
+	md-clear-button="false"
+	md-dropdown-items="5"
+  placeholder="Enter Artist, Team or Event Name(eg.Lakers)">
+	
+{{name}}
+</md-autocomplete>
+
+</div>
+<div  id="wrongkeyword" class="" style="margin-left:13%;color:red">
+         Please enter a keyword.
+        </div>
+
+
+
+
+
+
+<div class="form-row align-items-center " >
+  <div class="col-auto my-1">
+ <label class="mr-sm-2 " for="category" id="mobilecate">Category &nbsp &nbsp  </label>
+<span id="mobilehuanhang"></span>
+ <div class="col-auto my-1 custom-control-inline" id="mobilecategory" ><SELECT NAME="category" class="custom-select mr-sm-2  " id="category" >
+<OPTION value="All" selected >All</OPTION>
+<OPTION value="Music"  >Music</OPTION>
+<OPTION value="Sports" >Sports</OPTION>
+<OPTION value="Arts & Theatre" 
+
+ >Arts & Theatre</OPTION>
+<OPTION value="Film">Film</OPTION>
+<OPTION value="Miscellaneous"  >Miscellaneous</OPTION>
+</SELECT></div><BR>
+
+Distance &nbsp  &nbsp &nbsp &nbsp &nbsp&nbsp
+<span id="mobilehuanhang3"></span>
+<INPUT id="distance" class="form-control custom-control-inline" NAME="distance" placeholder=10 style="width:130px" >
+<span id="mobilehuanhang2"></span>
+  <div class="col-auto my-1 custom-control-inline" id="mobilemiles"><SELECT NAME="miles" id="miles" class="custom-select mr-sm-2  ">
+ <OPTION value="Miles" selected >Miles</OPTION>
+<OPTION value="Kilometers"  >Kilometers</OPTION>
+</SELECT></div>	
+<br/>
+
+ From<font color=red>*</font><span id="mobilespace">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </span>
+ <div class = "custom-control custom-radio custom-control-inline">
+<INPUT TYPE=radio checked=true name="chooselocation" id="Here" value="Here" class="custom-control-input"  onclick="chooseHere()" > <label class="custom-control-label" for="Here">Current location</label><br/>
+</div>
+<br/><span id="mobilespace1">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </span>
+ <div class = "custom-control custom-radio custom-control-inline">
+
+<INPUT TYPE=radio  name="chooselocation" id="Else" value="a" class="custom-control-input"  onclick="chooseElse()" > <label class="custom-control-label"for="Else" >Other. Please specify</label><br/>
+</div>
+<br/><span id="mobilespace2">
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </span>
+<INPUT id = "2" name="location" class="form-control custom-control-inline " style="width:400px"  disabled oninput="inputlocation()" >
+
+<br/>
+<div id="wronglocation" class="invalid-feedback">
+<span id="mobilespace3">&nbsp  &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp  &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp </span>           Please enter a location.
+        </div>
+
+
+<span ng-app="search" ng-controller="clicksearch">
+<button type=button class="btn btn-primary" id="submit" disabled name="submit" onclick="cc()" ng-click="change()" ><i class="material-icons">search</i>Search</button>
+</span>
+<button type=reset name="clear" class="btn btn-light" onclick="cl()"><i class="material-icons">clear_all</i>Clear</button>
+</font></div></div>
+</div>
+</form>
+</div>
+</div>
+
+
+
+<br/>
+<div id="mobilebr"></div>
+<div align="center" ng-app="resorfav" ng-controller="resfav">
+<button type="button" id="results" class="btn btn-primary" style="border:0" onclick="chooseResult()" ng-click="res()">Results</button>
+<button type="button" id="favorites" class="btn btn-outline-primary" style="border:0" onclick="chooseFavorite()" ng-click="fav()">Favorites</button>
+</div>
+<br/>
+<div id="progressbar"  align="center" style="display:none" ng-app="progress-bar" ng-controller="chooseProgressbar">
+<div  class="progress" style="width:60%;" ng-class="{'right':'eventtitle-show',false:'','left':'animate1-show'}[right]">
+
+  <div  class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%;" ></div>
+</div>
+</div>
+<div align="right" style="margin-right:20%;" id="mobiledetail">
+<span ng-app="details" ng-controller="clickdetails">
+<button type="button" id="detail" onclick="displaydetail()" class="btn btn-light "  ng-click="change()"  ng-class="{true:'detail-show',false:''}[left]"  style="display:none" disabled >Details  <i class="material-icons">arrow_forward_ios</i></button>
+</span>
+</div>
+
+
+
+<div id="eventtitle" ng-app="eventtitle" ng-controller="moveEventtitle" align="center" style="" ng-class="{true:'animate2-show',false:''}[right]"></div>
+
+<div  id="threebutton" style="display:none" class="" ng-app="list" ng-controller="clicklist" ng-class="{true:'threebutton-show',false:''}[right]">
+
+<button type="button" id="list" onclick="showlist();"  class="btn btn-light " style="margin-left:20%" ng-click="change()" ><i class="material-icons">arrow_back_ios</i>  List</button>
+
+
+<span id="mobilestar" style="float:right;margin-right:20%">
+<button type="button" id="star" class='btn btn-light material-icons'   style='background:white;' value='star_border;'>star_border</button>
+</span>
+<span style="float:right;">
+<input type="button" id="twitter"  class="btn btn-light twitter-share-button"   onclick="twit()"style="background-image:url('http://csci571.com/hw/hw8/Images/Twitter.png'); width:40px;height:40px;background-size:cover;" >
+</span>
+</div>
+
+<div id="fourbuttons" style="display:none"  ng-app="myApp3" ng-controller="Test1Ctrl" ng-class="{true:'fourbuttons-show',false:''}[right]">
+
+<ul class="nav nav-tabs"  >
+  
+  <li class="nav-item "  role="tablist" id="fourleft" style="margin-left:43%">
+    <a id="fourevent" class="nav-link active" href onclick="showdetail()" role="tab" data-toggle="tab" ng-click="choose()">Event</a>
+  </li>
+  <li class="nav-item ">
+    <a id="fourartist" class="nav-link" href onclick="showartist()" role="tab" data-toggle="tab" ng-click="choose()">Artist/Teams</a>
+  </li>
+  <li class="nav-item">
+    <a id="fourvenue" class="nav-link" href onclick="showvenue();showmap();" role="tab" data-toggle="tab" ng-click="choose()">Venue</a>
+  </li>
+  <li class="nav-item">
+    <a  ng-click="change();choose();"  id="fourupcoming" class="nav-link" href onclick="showupcoming();" role="tab" data-toggle="tab" >Upcoming Events</a>
+  </li>
+</ul>
+</div>
+
+
+
+
+
+
+<div style="margin-left:19%" id="mobilesort" class="" ng-app="twobuttons" ng-controller="chooseTwobuttons">
+<span   class=" custom-control-inline my-1"><SELECT onchange="sortbycategory()" style="left:-500px;top:300px;width:150px;display:none;"NAME="category" class="custom-select mr-sm-2" id="sortcategory" ng-class="{true:'sortcategory-show',false:'','x':'sortcategory-mobile'}[right]">
+
+<OPTION value="Default" selected >Default</OPTION>
+<OPTION value="Event Name"  >Event Name</OPTION>
+<OPTION value="Time" >Time</OPTION>
+<OPTION value="Artist"> 
+
+Artist</OPTION>
+<OPTION value="Type">Type</OPTION>
+
+</SELECT></span>
+<span   class=" my-1 custom-control-inline"><SELECT onchange="sortbyorder()" disabled  style="left:-350px;top:300px;width:150px;display:none"NAME="category" class="custom-select mr-sm-2 " id="sortorder" ng-class="{true:'sortorder-show',false:'','x':'sortorder-mobile'}[right]">
+
+<OPTION value="Ascending" selected >Ascending</OPTION>
+<OPTION value="Descending"  >Descending</OPTION>
+
+
+</SELECT></span>
+</div>
+
+
+	
+
+<div ng-app="left" ng-controller="moveLeft" id="huo" ng-model="left">
+
+<div id="tableX" align="center" name="tableX" style=""  ng-class="{true:'animate1-show',false:''}[left]" ></div>
+<div id="tableY" align="center" name="tableY" style=""  ng-class="{true:'animate1-show',false:''}[left]"></div>
+</div>
+<div ng-app="right" ng-controller="moveRight">
+<div id="tableZ" align="center" name="tableZ" style=""  ng-class="{true:'animate2-show',false:''}[right]"></div>
+<div align="center">
+<div  id='map' style='height:400px;width:950px;z-index:1;display:none;' ng-class="{true:'animate2-show',false:''}[right]"></div>
+</div>
+
+</div>
+
+<div ng-app="myApp" ng-controller="MainController">
+
+	 <div id="tablePlus" align="center" name="tablePlus" style="" ng-show="animate" class="animate-show animate-hide" ng-class="{true:'showmore-show',false:''}[right];{true:'animatex-show',false:'animatex-hide','no':''}[down]"></div>
+  
+
+
+<div align="center" >
+<INPUT class="btn btn-primary"  align="center" TYPE=button style="left:45%;top:1200px;display:none" value="Show More" id="showmore" ng-click="play()" onclick="showmoreorless()" ng-class="{true:'showmore-show',false:''}[right]">
+</div>
+</div>
+<br/><br/><br/><br/>
+
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">
+					View Seat Map
+				</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				
+			</div>
+			<div class="modal-body" id="modalbody" align="center">
+				<a href ="https://s1.ticketm.net/tmimages/venue/maps/la1/3185s.gif" id="seatpichref" target="_blank"><img src = "https://s1.ticketm.net/tmimages/venue/maps/la1/3185s.gif" id="seatpicture" style="width:300px;height:200px"></a></br>
+			</div>
+			<div class="modal-footer">
+				
+				<INPUT class="btn btn-light" data-dismiss="modal" TYPE=button  id="closepic" value="close" onclick="hideseatpic()" onmouseover="black()" onmouseleave="light()">
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+  
+
+
+</body>
+
+</html>

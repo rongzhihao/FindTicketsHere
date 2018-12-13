@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ListView
+        android:id="@+id/favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="538dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ListView>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="552dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/noFavorite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:text="No Favourites"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchList" />
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/seafav"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            app:tabBackground="@android:color/holo_blue_light"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabTextColor="@color/mygrey">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEARCH" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/favourite_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FAVOURITE" />
+
+        </android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/searchList"
+        android:layout_width="383dp"
+        android:layout_height="548dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Keyword" />
+
+        <TextView
+            android:id="@+id/wrongkeyword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please enter mandatory field"
+            android:textColor="@color/colorAccent"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@+id/keyword"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <AutoCompleteTextView
+            android:id="@+id/keyword"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:dropDownHeight="wrap_content"
+            android:hint="Enter keyword"
+            android:singleLine="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/wrongkeyword" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category" />
+
+        <Spinner
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchButton" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:text="Distance" />
+
+        <EditText
+            android:id="@+id/distance"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:ems="10"
+            android:hint="10"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/miles" />
+
+        <Spinner
+            android:id="@+id/miles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:text="From"
+            app:layout_constraintBottom_toBottomOf="@+id/search"
+            app:layout_constraintStart_toStartOf="@+id/radioGroup" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="238dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
+            app:layout_constraintBottom_toTopOf="@+id/location"
+            app:layout_constraintStart_toStartOf="@+id/wronglocation"
+            app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+            <RadioButton
+                android:id="@+id/here"
+                android:layout_width="158dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:onClick="chooseHere"
+                android:text="Current location"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="354dp" />
+
+            <RadioButton
+                android:id="@+id/elseplace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="chooseElse"
+                android:text="Other. Specify location"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="323dp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/wronglocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please enter mandatory field"
+            android:textColor="@color/colorAccent"
+            android:visibility="invisible" />
+
+        <EditText
+            android:id="@+id/location"
+            android:layout_width="356dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="Type in the location"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/clear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/search"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="107dp"
+
+                android:text="SEARCH"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/clear"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/clear"
+                android:layout_width="170dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="108dp"
+                android:text="CLEAR"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/search"
+                app:layout_constraintTop_toBottomOf="@+id/location" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
